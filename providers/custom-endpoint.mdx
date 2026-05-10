@@ -1,0 +1,84 @@
+---
+title: "Connect LMSA to a custom OpenAI-compatible endpoint"
+description: "Point LMSA at any OpenAI-compatible API — vLLM, LocalAI, text-generation-webui, or a private endpoint — with an optional API key and manual model ID."
+---
+
+LMSA supports any API that follows the OpenAI chat completions specification. This includes self-hosted inference servers such as [vLLM](https://docs.vllm.ai), [LocalAI](https://localai.io), [text-generation-webui](https://github.com/oobabooga/text-generation-webui) with the OpenAI extension, or any private API endpoint that your organization runs. If it speaks OpenAI-compatible chat completions, LMSA can connect to it.
+
+## Connect LMSA to a custom endpoint
+
+<Steps>
+  <Step title="Open Settings in LMSA">
+    Tap the settings icon in the top-right corner of the LMSA home screen.
+  </Step>
+  <Step title="Select Custom Endpoint">
+    On the **Connection** step, tap **Custom Endpoint**.
+  </Step>
+  <Step title="Enter the base URL">
+    Tap **Configure** and enter the base URL of your API. For example:
+
+    ```
+    http://192.168.1.10:8000
+    ```
+
+    or, if your server already includes a version path:
+
+    ```
+    http://192.168.1.10:8000/v1
+    ```
+
+    LMSA accepts either format and will normalize it automatically — you can also paste a full chat completions URL (ending in `/chat/completions`) and LMSA will strip the suffix for you.
+  </Step>
+  <Step title="Enter an API key (optional)">
+    If your server requires authentication, enter an API key in the **API Key** field. Leave it empty for servers that do not require authentication.
+  </Step>
+  <Step title="Enter a model ID (optional)">
+    If your server does not expose a `/models` endpoint, enter a model ID manually in the **Model ID** field. LMSA will use this ID in chat requests instead of attempting to fetch the model list.
+
+    If your server does expose `/models`, leave this field empty — LMSA will discover available models automatically.
+  </Step>
+  <Step title="Start chatting">
+    Tap **Save**. LMSA will connect to your endpoint and load the available models. Select a model from the picker and start chatting.
+  </Step>
+</Steps>
+
+<Note>
+  The URL you enter must be reachable from your Android device. If you are connecting to a server on your local network, ensure both devices are on the same Wi-Fi network. If you are connecting to a remote server, ensure the URL is publicly accessible or reachable via VPN.
+</Note>
+
+## URL normalization
+
+LMSA is flexible about the URL format you provide. All of the following inputs resolve to the same endpoint:
+
+| What you enter | What LMSA uses |
+|---|---|
+| `http://192.168.1.10:8000` | `http://192.168.1.10:8000/v1/chat/completions` |
+| `http://192.168.1.10:8000/v1` | `http://192.168.1.10:8000/v1/chat/completions` |
+| `http://192.168.1.10:8000/v1/chat/completions` | `http://192.168.1.10:8000/v1/chat/completions` |
+
+You do not need to worry about trailing slashes or the exact path — LMSA normalizes the URL before making any requests.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="LMSA shows 'No endpoint configured' or can't connect">
+    - Verify the URL is correct and that the server is running.
+    - Test the endpoint from a browser or `curl` to confirm it is accessible from your network.
+    - If connecting over Wi-Fi, make sure your Android device and the server are on the same network.
+    - If the server requires HTTPS, use `https://` in the URL. Self-signed certificates may cause connection errors on Android.
+  </Accordion>
+  <Accordion title="No models appear in the model picker">
+    Some servers do not expose a `/models` endpoint. In that case, enter the model ID manually in the **Model ID** field in LMSA's Custom Endpoint settings. LMSA will use that ID for all chat requests.
+  </Accordion>
+  <Accordion title="Requests fail with an authentication error">
+    Double-check the API key you entered in LMSA. The key is sent as a `Bearer` token in the `Authorization` header with every request.
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+  The Smart Reply feature is not available when Custom Endpoint is selected as your connection type.
+</Note>
+
+<Tip>
+  Use **Saved Presets** in LMSA's Connection settings to save multiple custom endpoint configurations and switch between them without retyping credentials or URLs.
+</Tip>

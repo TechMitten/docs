@@ -1,0 +1,116 @@
+---
+title: "AI personas, prompt templates, and Character Cards in LMSA"
+description: "Use built-in personas, create custom system-prompt templates, or import Character Card V2 files to shape how your AI thinks, speaks, and behaves in every chat."
+---
+
+Personas and templates give you a fast way to set the tone and role of your AI before a conversation begins. Instead of typing out a system prompt every time, you pick a template once and LMSA sends it automatically with every message. LMSA ships with a library of built-in personas and lets you create your own — including full support for the Character Card V2 format used in roleplay communities.
+
+## Built-in personas
+
+LMSA includes the following personas out of the box, each pre-written to steer the model toward a specific style or task:
+
+| Persona | What it does |
+|---|---|
+| Math Tutor | Solves problems step-by-step, explains formulas, and gently corrects mistakes |
+| Code Assistant | Writes clean, commented code and debugs existing snippets |
+| Story Writer | Crafts immersive narratives with strong character development |
+| Fortune Teller | Provides ethereal, enigmatic readings on the future and luck |
+| The Joker | Delivers jokes, dad humor, and playful banter |
+| General Tutor | Explains complex topics in simple language using analogies |
+| Social Media Writer | Creates catchy captions optimized for specific platforms |
+| Travel Planner | Builds detailed day-by-day itineraries with practical tips |
+| Career Coach | Reviews resumes, drafts cover letters, and runs mock interviews |
+| Email Polisher | Rewrites drafts to be clear, concise, and professional |
+| Sous Chef | Suggests recipes from your available ingredients with clear steps |
+| Debate Partner | Plays Devil's Advocate to stress-test your arguments |
+| Blog Post Writer | Creates SEO-optimized long-form content with a clear structure |
+| Tech Support | Provides methodical troubleshooting for technical problems |
+| Fitness Coach | Builds personalized workout routines and nutrition advice |
+| Summarizer | Produces concise, structured summaries of any text or documents |
+
+To use a persona, tap the template icon in LMSA, select the persona from the grid, and then tap **Start Chatting**.
+
+## Custom templates
+
+You can create your own templates with a custom name, system prompt, and avatar image.
+
+<Steps>
+  <Step title="Open the Templates screen">
+    Tap the templates icon from the main screen or from within a chat.
+  </Step>
+  <Step title="Tap the add button">
+    Tap **+** or **New Template** to open the template editor.
+  </Step>
+  <Step title="Choose Basic mode">
+    Make sure the editor is set to **Basic** mode (not Character Card V2).
+  </Step>
+  <Step title="Fill in the details">
+    Enter a name for your template and write your system prompt in the text area. You can also set a custom avatar.
+  </Step>
+  <Step title="Save">
+    Tap **Save**. Your template appears in the custom templates section of the grid.
+  </Step>
+</Steps>
+
+<Note>
+  Creating custom templates requires LMSA Premium.
+</Note>
+
+### AI-generated system prompts
+
+If you are not sure how to phrase your system prompt, tap **Generate with AI** inside the template editor. Describe what you want the persona to do in plain language and LMSA asks your connected model to write a complete system prompt for you.
+
+<Note>
+  AI-powered system prompt generation requires LMSA Premium.
+</Note>
+
+## Character Card V2
+
+Character Card V2 is an industry-standard format for roleplay personas. It stores a character's name, personality, scenario, opening message, and example dialogue in a structured JSON object. LMSA reads this format natively.
+
+### Supported fields
+
+| Field | Description |
+|---|---|
+| `name` | The character's display name |
+| `personality` | A description of the character's traits and voice |
+| `scenario` | The setting or context for the roleplay |
+| `first_mes` | The character's opening message that appears at the start of the chat |
+| `mes_example` | Example dialogue that shows how the character talks |
+
+### Importing a character card
+
+LMSA accepts two import formats:
+
+<Tabs>
+  <Tab title="JSON file">
+    Tap **Import** in the Templates screen and select a `.json` file exported from any Character Card V2–compatible tool.
+  </Tab>
+  <Tab title="PNG with embedded card">
+    Many character card creators embed the card data directly inside a `.png` image. Tap **Import** and select the image — LMSA extracts the embedded card data automatically.
+  </Tab>
+</Tabs>
+
+### Creating a character card in LMSA
+
+<Steps>
+  <Step title="Open the template editor">
+    Tap **+** or **New Template** to open the editor.
+  </Step>
+  <Step title="Switch to Character Card V2 mode">
+    Tap the mode selector at the top of the editor and choose **Character Card V2**.
+  </Step>
+  <Step title="Fill in the character fields">
+    Enter values for name, personality, scenario, first message, and example dialogue.
+  </Step>
+  <Step title="Generate with AI (optional)">
+    Tap **Generate with AI** to let the model fill in a complete, coherent character card from a short description. (Premium)
+  </Step>
+  <Step title="Save">
+    Tap **Save**. The card appears in your custom templates grid.
+  </Step>
+</Steps>
+
+<Warning>
+  Switching to a different template in the middle of a conversation starts a new chat. Your current conversation is saved to history, but the active model context resets.
+</Warning>

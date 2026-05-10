@@ -1,0 +1,125 @@
+---
+title: "Back up and transfer your LMSA data with import/export"
+description: "Back up your chat history, import LM Studio profiles, and move system prompt templates in and out of LMSA using the built-in import and export tools."
+---
+
+LMSA stores everything — your conversations, custom templates, and system prompts — on your device. The import and export tools let you back up that data, move it between devices, or bring in configurations from external sources like LM Studio. All import and export operations are available from the app's sidebar menu.
+
+<Note>
+Chat history export and import require **LMSA Premium**. Tapping the export or import button on a free account opens the Premium upgrade prompt.
+</Note>
+
+<Tip>
+Export your chat history regularly if you want a personal backup. Because chats are stored on-device only, uninstalling the app or clearing app data permanently deletes your conversation history.
+</Tip>
+
+---
+
+## Export chat history
+
+Exporting saves all your conversations to a file you can store, share, or analyze outside the app.
+
+<Steps>
+  <Step title="Open the sidebar">
+    Tap the menu icon (top-left of the chat screen) to open the sidebar.
+  </Step>
+  <Step title="Tap Export">
+    Select **Export** from the sidebar menu.
+  </Step>
+  <Step title="Confirm the export">
+    A confirmation dialog appears. Tap **Confirm** to proceed. LMSA generates the export file and prompts you to save or share it using Android's standard file picker or share sheet.
+  </Step>
+</Steps>
+
+---
+
+## Import chat history
+
+You can restore a previously exported chat history file to bring your conversations back into LMSA.
+
+<Steps>
+  <Step title="Open the sidebar">
+    Tap the menu icon to open the sidebar.
+  </Step>
+  <Step title="Tap Import">
+    Select **Import** from the sidebar menu.
+  </Step>
+  <Step title="Select the file">
+    Use the file picker to locate your exported chat history file.
+  </Step>
+  <Step title="Confirm the import">
+    A confirmation dialog shows the contents of the file. Tap **Confirm** to merge the imported chats into your current history.
+  </Step>
+</Steps>
+
+<Warning>
+Importing a chat history file merges the imported conversations with your existing chats. This action cannot be undone. If you want to start fresh, clear your current chat history before importing.
+</Warning>
+
+---
+
+## Import LM Studio profiles
+
+If you use LM Studio on your PC, you can import its system prompt and configuration profiles into LMSA to keep your setups consistent across devices.
+
+<Steps>
+  <Step title="Export the profile from LM Studio">
+    In LM Studio on your PC, export the profile you want to use. This creates a JSON or compatible configuration file.
+  </Step>
+  <Step title="Transfer the file to your Android device">
+    Copy the exported file to your phone via USB, cloud storage, or any file transfer method you prefer.
+  </Step>
+  <Step title="Open Settings in LMSA">
+    Tap the gear icon to open Settings.
+  </Step>
+  <Step title="Import the profile">
+    Navigate to **Settings → Import → LM Studio Profile** and select the file. LMSA reads the profile and applies the configuration.
+  </Step>
+</Steps>
+
+---
+
+## Export and import custom templates
+
+Custom system prompt templates you create in LMSA can be exported for backup and imported back when needed.
+
+<Tabs>
+  <Tab title="Export templates">
+    <Steps>
+      <Step title="Go to the Templates screen">
+        Tap **Templates** from the main screen or sidebar.
+      </Step>
+      <Step title="Open the export option">
+        Tap the menu or overflow icon and select **Export Templates**.
+      </Step>
+      <Step title="Save the file">
+        Choose where to save the exported template file using Android's file picker.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Import templates">
+    <Steps>
+      <Step title="Go to the Templates screen">
+        Tap **Templates** from the main screen or sidebar.
+      </Step>
+      <Step title="Open the import option">
+        Tap the menu or overflow icon and select **Import Templates**.
+      </Step>
+      <Step title="Select the file">
+        Choose your previously exported template file. LMSA restores the templates into your custom templates list.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+---
+
+## What is and isn't exported
+
+| Data | Export supported? |
+|---|---|
+| Chat history | Yes (Premium) |
+| Custom system prompt templates | Yes |
+| Connection presets | No |
+| Model parameter settings | No |
+| App settings (font, toggles, etc.) | No |

@@ -1,0 +1,118 @@
+---
+title: "Quick start: connect LMSA and send your first message"
+description: "Connect LMSA to a local AI server or cloud provider and send your first message in under five minutes — the fastest path from install to chatting."
+---
+
+The fastest way to get LMSA working is to pick your provider, enter your connection details, select a model, and start a conversation. This guide walks you through each step. The whole process takes under five minutes.
+
+<Note>
+If you haven't installed LMSA yet, [download it from Google Play](https://play.google.com/store/apps/details?id=com.lmsa.app) first. Android 6.0 or higher is required. See [Install LMSA](/installation) for details.
+</Note>
+
+## Choose your setup path
+
+<Tabs>
+  <Tab title="Local server (LM Studio / Ollama)">
+    Use this path if you have LM Studio or Ollama running on your PC or Mac and you want to keep all AI processing on your home network.
+
+    **Before you begin:** Your phone and your PC must be connected to the same Wi-Fi network. Make sure your local server is running and a model is loaded before you open LMSA settings.
+
+    <Steps>
+      <Step title="Find your PC's local IP address">
+        On your PC, open a terminal and run the appropriate command:
+
+        <Tabs>
+          <Tab title="Windows">
+            ```bat
+            ipconfig
+            ```
+            Look for **IPv4 Address** under your active network adapter. It typically looks like `192.168.x.x`.
+          </Tab>
+          <Tab title="macOS / Linux">
+            ```bash
+            ifconfig | grep "inet "
+            ```
+            Use the address associated with your Wi-Fi interface (usually `en0` on macOS).
+          </Tab>
+        </Tabs>
+      </Step>
+      <Step title="Note your server port">
+        The default port is **1234** for LM Studio and **11434** for Ollama. Check your server's dashboard if you've changed it.
+      </Step>
+      <Step title="Open LMSA settings">
+        Launch LMSA on your phone and tap the **Settings** icon. The connection type defaults to **Local Server** — no toggle needed unless you previously switched to a cloud provider.
+      </Step>
+      <Step title="Enter the server IP and port">
+        In settings, fill in your PC's local IP address and the port number. Tap **Save** or **Connect** to confirm.
+
+        <Tip>
+          If the connection fails, check that your firewall allows inbound connections on the server port, and that both devices are on the same Wi-Fi network (not one on Wi-Fi and one on Ethernet with isolation enabled).
+        </Tip>
+      </Step>
+      <Step title="Select a model">
+        Return to the main screen. Tap the model selector at the top and choose from the models your server reports as available. The list updates automatically when you load or unload models on your PC.
+      </Step>
+      <Step title="Start chatting">
+        Tap the compose area, type your message, and send. Your request travels over your local network to the model on your PC — no data leaves your home.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Cloud (OpenRouter)">
+    Use this path if you want instant access to 100+ cloud models — including Llama, Mistral, Claude, Gemini, and DeepSeek — without running anything on your PC.
+
+    **Before you begin:** You need a free OpenRouter API key. Sign up at [openrouter.ai](https://openrouter.ai) if you don't have one yet.
+
+    <Steps>
+      <Step title="Copy your OpenRouter API key">
+        Log in to [openrouter.ai](https://openrouter.ai), go to **Keys**, and copy your API key. It starts with `sk-or-`.
+      </Step>
+      <Step title="Open LMSA settings">
+        Launch LMSA on your phone and tap the **Settings** icon.
+      </Step>
+      <Step title="Switch to OpenRouter">
+        In settings, find the provider section and enable the **OpenRouter** toggle. The local server fields will be replaced with an API key field.
+      </Step>
+      <Step title="Paste your API key">
+        Paste your OpenRouter API key into the **API Key** field and save.
+      </Step>
+      <Step title="Select a model">
+        Return to the main screen. Tap the model selector and choose from the available cloud models. Free and paid models are both listed — check [openrouter.ai/models](https://openrouter.ai/models) for pricing details.
+      </Step>
+      <Step title="Start chatting">
+        Type your message and send. Your request goes directly from LMSA to OpenRouter — there are no additional intermediary servers.
+      </Step>
+    </Steps>
+
+    <Note>
+      When using OpenRouter, your messages are sent to OpenRouter's API and then forwarded to the model provider. See the [OpenRouter privacy policy](https://openrouter.ai/privacy) for details on how they handle your data.
+    </Note>
+  </Tab>
+</Tabs>
+
+## Free vs. premium
+
+LMSA is free to download and use. The free tier includes ads. A one-time in-app purchase removes all ads and unlocks every premium feature permanently — no recurring fees.
+
+| Feature | Free | Premium |
+|---|---|---|
+| Connect to local servers | Yes | Yes |
+| Connect to OpenRouter | Yes | Yes |
+| Core chat features | Yes | Yes |
+| Ads | Yes | Removed |
+| AI image generation | 2 per lifetime | Unlimited |
+| Character Card AI generation | No | Yes |
+
+<Tip>
+  You can upgrade to premium at any time from the **Settings** screen inside LMSA. The purchase is processed through Google Play and is tied to your Google account.
+</Tip>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Connect a provider" icon="plug" href="/providers/lm-studio">
+    Detailed setup guides for LM Studio, Ollama, OpenRouter, and custom endpoints.
+  </Card>
+  <Card title="Explore features" icon="stars" href="/features/chat">
+    Personas, web search, image generation, TTS, file uploads, and more.
+  </Card>
+</CardGroup>

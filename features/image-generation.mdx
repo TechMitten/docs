@@ -1,0 +1,49 @@
+---
+title: "Generate AI images inline in LMSA chats using /image"
+description: "Use the /image command in any LMSA chat to generate images inline — type a description and the result appears directly in your conversation thread."
+---
+
+LMSA lets you generate images without leaving the chat interface. Type a slash command with your description and an image appears directly in your conversation thread. You can view it full-screen, save it, or keep chatting — the image stays in your chat history alongside your messages.
+
+## Generating an image
+
+Type `/image` followed by your description in the chat input bar, then tap **Send**.
+
+```text
+/image a futuristic city at night, neon lights, cyberpunk style
+```
+
+LMSA sends your prompt to your connected provider's image generation endpoint and the result appears inline in the chat within a few seconds.
+
+### Tips for better results
+
+<AccordionGroup>
+  <Accordion title="Be specific about style">
+    Include style cues like `photorealistic`, `oil painting`, `watercolor`, `anime`, or `pencil sketch` to steer the visual style of the output.
+  </Accordion>
+  <Accordion title="Describe composition and lighting">
+    Prompts like `wide-angle shot`, `close-up portrait`, `golden hour lighting`, or `dramatic shadows` give the model more to work with and produce more intentional results.
+  </Accordion>
+  <Accordion title="Use negative space sparingly">
+    Focus your prompt on what you want to appear rather than what you want to exclude. Short, vivid descriptions outperform long lists of exclusions.
+  </Accordion>
+</AccordionGroup>
+
+## Viewing and saving images
+
+Tap any generated image in the chat to open it full-screen. From the full-screen view you can save the image to your device's gallery.
+
+## Usage limits
+
+<Tabs>
+  <Tab title="Free tier">
+    Free users can generate a limited number of images. Once you reach the limit, LMSA prompts you to upgrade to Premium to continue.
+  </Tab>
+  <Tab title="Premium">
+    Premium users have unlimited image generations with no cap.
+  </Tab>
+</Tabs>
+
+<Note>
+  Image generation requires your connected provider to support it. LM Studio and Ollama support image generation when a compatible model (such as a Stable Diffusion model) is loaded. OpenRouter also supports image generation with compatible models. If your current model does not support image generation, the `/image` command will return an error from the provider.
+</Note>

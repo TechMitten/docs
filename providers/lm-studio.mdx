@@ -1,0 +1,82 @@
+---
+title: "Connect LMSA to LM Studio on your home Wi-Fi network"
+description: "Run a local AI server on your PC or Mac with LM Studio and chat with any GGUF model from your Android device — privately, over your home Wi-Fi."
+---
+
+LM Studio is a desktop application for Windows and macOS that lets you download and run large language models locally, then expose them over a local HTTP server. LMSA connects to that server over your Wi-Fi network, so your conversations never leave your home or office.
+
+## Before you start
+
+Both your PC and your Android device must be connected to the **same Wi-Fi network**. LMSA communicates with LM Studio over your local network, so this is required for the connection to work.
+
+## Set up LM Studio on your PC
+
+<Steps>
+  <Step title="Install LM Studio">
+    Download and install LM Studio from [lmstudio.ai](https://lmstudio.ai) on your Windows or macOS computer.
+  </Step>
+  <Step title="Load a model">
+    Open LM Studio, go to the **Discover** tab, and download a GGUF model (for example, Llama 3 or Mistral). Once downloaded, load it in the model selector at the top of the window.
+  </Step>
+  <Step title="Start the local server">
+    Click the **Developer** tab (the `<->` icon in the left sidebar) and press **Start Server**. The server runs on port **1234** by default. You will see a green indicator and a URL like `http://localhost:1234`.
+  </Step>
+  <Step title="Find your PC's local IP address">
+    You need the PC's IP address on your local network — not `localhost` or `127.0.0.1`.
+
+    - **Windows**: Open a terminal and run `ipconfig`. Look for the **IPv4 Address** under your Wi-Fi adapter (for example, `192.168.1.45`).
+    - **macOS**: Open **System Settings → Wi-Fi → Details** and copy the **IP Address** field.
+  </Step>
+</Steps>
+
+## Connect LMSA to LM Studio
+
+<Steps>
+  <Step title="Open Settings in LMSA">
+    Tap the settings icon in the top-right corner of the LMSA home screen.
+  </Step>
+  <Step title="Select Local Server">
+    On the **Connection** step, tap **Local Server**. Make sure the **Ollama** toggle is turned off — LM Studio uses a different API path.
+  </Step>
+  <Step title="Enter your PC's IP and port">
+    Tap **Configure**, then enter your PC's local IP address (for example, `192.168.1.45`) and port `1234`. Tap **Save**.
+  </Step>
+  <Step title="Start chatting">
+    LMSA will detect the loaded model automatically. Return to the chat screen and start a conversation.
+  </Step>
+</Steps>
+
+<Note>
+  LMSA automatically detects which API version your LM Studio installation supports — both the newer `/api/v1/` path (LM Studio 0.3.6 and later) and the legacy `/v1/` path are handled transparently.
+</Note>
+
+## Optional: LM Studio API token
+
+If you have enabled authentication in LM Studio's server settings, you will need to provide an API token in LMSA.
+
+In LMSA Settings, on the **Local Server** panel, tap **Token** next to the key icon and paste your LM Studio API token. Leave this field empty if your server does not require authentication.
+
+## MCP servers
+
+If you use LM Studio's MCP (Model Context Protocol) server integrations, you can configure them in LMSA as well. On the **Local Server** panel, tap **MCP** to add your integrations. See [MCP integrations](/features/mcp) for full details.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="LMSA shows 'Not configured' or can't reach the server">
+    - Confirm LM Studio's local server is running (the green status indicator is visible in the Developer tab).
+    - Double-check that you entered the PC's **local network IP** (for example, `192.168.1.x`), not `localhost`.
+    - Verify both devices are on the **same Wi-Fi network**. Mobile data or a guest network will not work.
+    - Check that your PC's firewall is not blocking port 1234.
+  </Accordion>
+  <Accordion title="No models appear in LMSA">
+    Make sure a model is loaded in LM Studio before connecting. LMSA reads the list of available models from the running server; if no model is loaded, the list will be empty.
+  </Accordion>
+  <Accordion title="Connection works but responses are slow">
+    Response speed depends on your PC's hardware. Larger models require more RAM and CPU or GPU capacity. Try a smaller quantized model (for example, a Q4 variant) if responses are taking too long.
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+  If you regularly switch between multiple PCs or network locations, use LMSA's **Saved Presets** feature (in the Connection settings panel) to save and switch between server configurations without retyping your IP and port each time.
+</Tip>

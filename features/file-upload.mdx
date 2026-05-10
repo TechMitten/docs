@@ -1,0 +1,56 @@
+---
+title: "Attach documents and images to your AI chats in LMSA"
+description: "Attach documents, code files, and photos to any LMSA chat. Text extraction, OCR, and PDF rendering run locally on your device so your files stay private."
+---
+
+LMSA lets you attach files directly to your messages so the AI can analyze, summarize, or answer questions about your documents. Text extraction, OCR, and PDF rendering all happen on your device — nothing is sent to an external processing service. Tap the attachment icon in the chat input bar to get started.
+
+## Supported file types
+
+LMSA accepts a wide range of document and code formats:
+
+<AccordionGroup>
+  <Accordion title="Documents">
+    Plain text (`.txt`), PDF (`.pdf`), HTML (`.html`), Markdown (`.md`), and CSV (`.csv`)
+  </Accordion>
+  <Accordion title="Code files">
+    Python (`.py`), JavaScript (`.js`), JSON (`.json`), and other common source code formats
+  </Accordion>
+  <Accordion title="Images">
+    JPEG, PNG, WebP, GIF, BMP, AVIF, APNG, and SVG — for vision-capable models
+  </Accordion>
+</AccordionGroup>
+
+## Attaching a file
+
+<Steps>
+  <Step title="Tap the attachment icon">
+    In the chat input bar, tap the paperclip or attachment icon to open your device's file picker.
+  </Step>
+  <Step title="Select your file">
+    Browse to the file you want to attach and tap it. LMSA processes it immediately on your device.
+  </Step>
+  <Step title="Send your message">
+    The attached file appears as a preview above the input bar. Add any message or question, then tap **Send**. LMSA includes the extracted content as context for the model.
+  </Step>
+</Steps>
+
+## How LMSA processes files
+
+**PDFs** are rendered using PDF.js, which gives LMSA access to the text layer in the document. For scanned PDFs or image-based documents where no text layer exists, LMSA falls back to OCR.
+
+**OCR** (optical character recognition) is handled by Tesseract.js, running entirely on your device. This means you can extract text from scanned documents, photos of printed text, or screenshots without any data leaving your phone.
+
+**Images** attached to a message are passed directly to the model if it supports vision inputs. The model can describe the image, answer questions about it, or use it as context.
+
+<Note>
+  Vision features require a model that supports image inputs. Check your model's documentation to confirm multimodal capability. If your model is text-only, attached images will not be interpreted visually.
+</Note>
+
+<Tip>
+  For large documents, LMSA extracts the text content and sends it as part of the model's context. If a document exceeds the model's context window, consider splitting it into sections or asking focused questions about specific parts.
+</Tip>
+
+## Privacy
+
+All file processing — text extraction, OCR, and PDF rendering — runs locally on your device. Your documents are not uploaded to any external server. The extracted text is sent to your configured AI provider as part of the chat context, subject to that provider's privacy policy.

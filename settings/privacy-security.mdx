@@ -1,0 +1,77 @@
+---
+title: "LMSA privacy and security: biometric lock and local-first"
+description: "Learn how LMSA keeps your conversations private — local-first architecture, biometric unlock, zero telemetry, and no LMSA servers in the data path."
+---
+
+Privacy is central to how LMSA is designed, not an optional add-on. Your conversations are never routed through LMSA's servers, no analytics are collected from your chats, and the app works fully offline when you use a local AI provider. This page explains exactly what stays on your device and what — if anything — leaves it, along with the security options you can enable.
+
+## Local-first architecture
+
+When you connect to LM Studio or Ollama, every message travels exclusively between your Android device and the server running on your home network. Nothing touches the internet, and nothing touches LMSA's infrastructure. Your conversation history is stored on your device's local storage only.
+
+<Note>
+Local connections use plain HTTP on your LAN. LMSA does not add TLS to local server traffic. Use LMSA only on networks you trust — avoid connecting to an LM Studio or Ollama server over public Wi-Fi without a VPN.
+</Note>
+
+## OpenRouter data flow
+
+When you use OpenRouter, your messages travel directly from LMSA to the OpenRouter API — there are no intermediary LMSA servers in the path. LMSA acts as a thin client that formats and sends your request directly to OpenRouter's endpoint.
+
+<Warning>
+Using OpenRouter sends your conversation content to OpenRouter's servers and then to the underlying model provider (such as Anthropic, Google, or Meta). Review [OpenRouter's privacy policy](https://openrouter.ai/privacy) to understand how they handle your data before using cloud models.
+</Warning>
+
+## No analytics or telemetry
+
+LMSA does not collect, transmit, or store your conversation content anywhere. There is no usage tracking, no behavioral analytics, and no crash-reporting that includes message content. The Play Store data safety section confirms that no data is collected from users.
+
+## Biometric unlock
+
+Biometric unlock adds a lock screen to LMSA so that anyone who picks up your phone cannot read your chat history without your fingerprint, face scan, or PIN.
+
+### Enable biometric unlock
+
+<Steps>
+  <Step title="Open Settings">
+    Tap the gear icon to open the Settings modal.
+  </Step>
+  <Step title="Go to Options (Step 2)">
+    Navigate to **Step 2 — Options** and scroll to the **Device & Voice** group.
+  </Step>
+  <Step title="Toggle Biometric Unlock">
+    Tap the **Biometric Unlock** card to enable it. The toggle switches on immediately.
+  </Step>
+</Steps>
+
+Once enabled, LMSA prompts for your biometric credential each time the app is opened or returns from the background.
+
+<Info>
+Biometric unlock relies on the credentials enrolled in your Android system settings (fingerprint, face, or PIN). If you have not set up a biometric method on your device, you need to do so in Android Settings before this toggle will work. Biometric data is handled entirely by Android and never leaves your device.
+</Info>
+
+### Disable biometric unlock
+
+Return to **Settings → Options → Device & Voice → Biometric Unlock** and toggle it off. You will need to authenticate once to confirm the change.
+
+## Offline mode
+
+When you connect to a local LM Studio or Ollama server on your LAN, LMSA operates with no internet access required. The following features work completely offline in local server mode:
+
+- Sending and receiving chat messages
+- Switching models
+- Saving and viewing chat history
+- Adjusting parameters and system prompts
+
+Features that do require internet access (even in local mode):
+- **Web Search** — fetches live data from the Brave Search API
+- **OpenRouter** connections — require internet by definition
+
+## Summary
+
+| Scenario | Data leaves your device? |
+|---|---|
+| LM Studio / Ollama on LAN | No — stays on your home network |
+| OpenRouter | Yes — goes to OpenRouter's API |
+| Chat history | No — stored on-device only |
+| Analytics / telemetry | No — none collected |
+| Biometric data | No — handled by Android OS |

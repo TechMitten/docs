@@ -1,0 +1,118 @@
+---
+title: "LMSA FAQ: providers, privacy, pricing, and features"
+description: "Answers to the most common questions about LMSA — how it works, which AI providers it supports, privacy guarantees, pricing, and supported features."
+---
+
+LMSA is an Android app that lets you chat with AI models from your phone — either locally through LM Studio or Ollama on your home network, or via cloud models through OpenRouter. If you have a question that isn't answered here, email [support@lmsa.app](mailto:support@lmsa.app).
+
+<AccordionGroup>
+
+  <Accordion title="What is LMSA?">
+    LMSA stands for **Local Model Smart Assistant**. It is an Android app that connects your phone to AI language models — either running locally on your own PC (via LM Studio or Ollama) or through cloud providers like OpenRouter.
+
+    Because LMSA acts as a lightweight bridge to your models, no conversations are processed on LMSA's servers. You stay in control of where your data goes and which model you talk to.
+  </Accordion>
+
+  <Accordion title="Does LMSA work with LM Studio, Ollama, and OpenRouter?">
+    Yes. LMSA supports all three out of the box:
+
+    - **LM Studio** — connect to any GGUF model running on your PC or Mac.
+    - **Ollama** — full support for Ollama servers and all compatible models.
+    - **OpenRouter** — access 100+ cloud models (DeepSeek, Llama, Mistral, Claude, Gemini, and more) with your own API key.
+
+    LMSA also supports any **OpenAI-compatible custom endpoint**, so you can connect to self-hosted or third-party servers that follow the OpenAI API format. Switch between providers at any time in **Settings → Connection**.
+  </Accordion>
+
+  <Accordion title="Do I need to be on the same Wi-Fi network?">
+    **For local providers (LM Studio and Ollama): yes.** Your phone and your PC must be connected to the same Wi-Fi network. LMSA communicates with your local server over your home network, so both devices need to be reachable at the same network address.
+
+    <Note>
+      Avoid guest Wi-Fi networks or separate SSIDs — these often block device-to-device communication even when they share the same router.
+    </Note>
+
+    **For OpenRouter and custom cloud endpoints: no.** These connect over the internet and work from any network, including mobile data.
+  </Accordion>
+
+  <Accordion title="Are my chats private?">
+    Privacy depends on which provider you use:
+
+    - **Local providers (LM Studio / Ollama):** Your conversations never leave your home network. Everything is processed on your PC, and LMSA never sees or stores your messages.
+    - **OpenRouter:** Requests go directly from LMSA to OpenRouter's API. LMSA does not route these through any intermediary server and does not store your conversations. OpenRouter's own privacy policy applies.
+
+    LMSA does not collect telemetry, analytics, or conversation data in any mode. Your chat history is stored only on your device.
+  </Accordion>
+
+  <Accordion title="Can I use LMSA offline?">
+    Yes — when using a local provider. If LM Studio or Ollama is running on your PC and both devices are on the same Wi-Fi network, LMSA works entirely without an internet connection.
+
+    OpenRouter and custom cloud endpoints require an active internet connection.
+  </Accordion>
+
+  <Accordion title="Is LMSA free to use?">
+    LMSA is **free to download** from Google Play. The free version gives you access to core chat functionality with ads.
+
+    A **one-time in-app purchase** (no subscription) unlocks LMSA Premium, which removes all ads and unlocks the full feature set, including:
+
+    - Unlimited AI image generation
+    - AI character card generation
+    - Custom persona templates
+    - All future Premium features
+
+    There are no recurring fees. Once you purchase Premium, you own it permanently.
+  </Accordion>
+
+  <Accordion title="Does LMSA contain ads?">
+    The free version displays ads. **LMSA Premium removes all ads** with a single one-time purchase — no subscription, no renewal. If you uninstall and reinstall the app, your purchase can be restored through Google Play.
+  </Accordion>
+
+  <Accordion title="What Android version is required?">
+    LMSA requires **Android 6.0 (Marshmallow) or higher**. It runs on both phones and tablets.
+  </Accordion>
+
+  <Accordion title="What models can I use?">
+    The models available to you depend on which provider you connect to:
+
+    - **LM Studio:** Any GGUF model you have loaded in LM Studio on your PC.
+    - **Ollama:** Any model you have pulled and are running in Ollama.
+    - **OpenRouter:** 100+ cloud models, including DeepSeek, Llama, Mistral, Phi, Qwen, Claude, Gemini, and more.
+
+    LMSA fetches the list of available models directly from your connected provider, so the model list stays up to date automatically.
+  </Accordion>
+
+  <Accordion title="What is Character Card V2?">
+    Character Card V2 is an industry-standard format for defining AI roleplay personas — including a character's personality, backstory, scenario, and example dialogue. LMSA supports importing character cards in both `.json` format and image-embedded `.png` format.
+
+    You can also create your own character cards from scratch inside LMSA, or use the AI-powered generation feature (Premium) to generate a complete card automatically.
+  </Accordion>
+
+  <Accordion title="What is Thinking Mode?">
+    Some models — like DeepSeek-R1 — support extended reasoning, where the model works through a problem internally before producing a final answer. LMSA can display this internal reasoning chain, so you can follow the model's thought process step by step.
+
+    You can show or hide the reasoning chain in **Settings**. If you prefer to see only the final answer, toggle **Hide Thinking** on.
+
+    <Tip>
+      If a model produces excessive repetitive reasoning output (such as looping "wait, I should" phrases), try setting **Reasoning Level** to **Disabled** in Settings. This is a known behavior with certain model versions, not a bug in LMSA.
+    </Tip>
+  </Accordion>
+
+  <Accordion title="Does LMSA support voice and text-to-speech?">
+    Yes. LMSA includes **Text-to-Speech (TTS)** powered by Android's native speech engine. Tap the speaker icon on any AI message to have it read aloud. You can select from the TTS voices available on your device in **Settings**.
+
+    TTS works in any provider mode and does not require an internet connection when using local providers.
+  </Accordion>
+
+  <Accordion title="What file types can I attach?">
+    You can attach the following file types to your conversations:
+
+    - **Documents:** TXT, PDF, JSON, CSV, HTML, Markdown
+    - **Code files:** Python, JavaScript
+    - **Images:** JPEG, PNG, and other common image formats
+
+    LMSA uses OCR (via Tesseract.js) to extract text from images and scanned documents, making their contents available as context for your AI model.
+  </Accordion>
+
+  <Accordion title="Is there a desktop version?">
+    **LMSA Desktop is coming soon.** It will include optional sync between your mobile and desktop workspaces — chat history, prompts, templates, and preferences — so you can pick up any conversation on either device. Sign-in is optional; sync only activates if you enable it.
+  </Accordion>
+
+</AccordionGroup>

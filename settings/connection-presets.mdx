@@ -1,0 +1,90 @@
+---
+title: "Save and quickly switch server connection presets in LMSA"
+description: "Store your server configurations as named presets so you can instantly switch between home, work, or cloud connections in LMSA without retyping credentials."
+---
+
+Connection presets let you save a complete server configuration — provider type, server address, port, and credentials — under a friendly name and switch between setups in a single tap. If you connect to a home LM Studio server during the evening and an OpenRouter key during travel, presets eliminate the need to re-enter details every time you change environments.
+
+## What a preset stores
+
+Each preset captures everything LMSA needs to connect to a specific backend:
+
+| Field | Details |
+|---|---|
+| **Provider type** | Local Server (LM Studio or Ollama), OpenRouter, or Custom Endpoint |
+| **Server IP & port** | For local server presets |
+| **API key** | For OpenRouter or custom endpoint presets |
+| **LM Studio API token** | Optional authentication token for local servers |
+
+## Save a new preset
+
+<Steps>
+  <Step title="Configure your connection">
+    Open **Settings** (the gear icon) and go to **Step 1 — Connection**. Choose your provider type and fill in your server address, port, or API key as normal.
+  </Step>
+  <Step title="Open the Saved Presets section">
+    Scroll down within the Connection step to the **Saved Presets** card and tap the expand arrow to open it.
+  </Step>
+  <Step title="Enter a preset name">
+    Type a name in the **Preset Name** field. The name is required — the Save button stays disabled until you provide one.
+  </Step>
+  <Step title="Tap Save Current">
+    Tap the **Save Current** button. The preset appears immediately in your presets list, sorted by most recently updated.
+  </Step>
+</Steps>
+
+<Tip>
+Use descriptive names that include the location and provider, such as "Home LM Studio", "Work Ollama", or "OpenRouter Cloud". Preset names are limited to 50 characters.
+</Tip>
+
+## Switch to a saved preset
+
+<Steps>
+  <Step title="Open the Saved Presets section">
+    In **Settings → Connection**, expand the **Saved Presets** card.
+  </Step>
+  <Step title="Tap a preset">
+    Tap any preset in the list to load its stored connection details into the active configuration.
+  </Step>
+  <Step title="Confirm">
+    Tap **Confirm** (or close Settings). LMSA immediately connects using the selected preset.
+  </Step>
+</Steps>
+
+## Update an existing preset
+
+If your server IP changes or you rotate an API key, you can overwrite a saved preset rather than creating a duplicate.
+
+<Steps>
+  <Step title="Update your connection settings">
+    Enter the new server address or credentials in the Connection step as usual.
+  </Step>
+  <Step title="Select the existing preset to edit">
+    In the Saved Presets list, tap the **edit** icon on the preset you want to update.
+  </Step>
+  <Step title="Save the changes">
+    Confirm the update in the edit modal. The preset's **Updated** timestamp refreshes and it moves to the top of the list.
+  </Step>
+</Steps>
+
+## Delete a preset
+
+Tap the **delete** icon on any preset in the list and confirm removal. Deleting a preset does not change your current active connection.
+
+## Common use cases
+
+<AccordionGroup>
+  <Accordion title="Home vs. work server">
+    Save your home LM Studio IP under "Home LM Studio" and your office Ollama instance under "Work Ollama". Switch between them in seconds when you move between networks.
+  </Accordion>
+  <Accordion title="Local vs. cloud fallback">
+    Keep a "Local Server" preset for when your PC is running and an "OpenRouter Cloud" preset for when you're away from home and want cloud model access.
+  </Accordion>
+  <Accordion title="Multiple OpenRouter keys">
+    If you manage separate OpenRouter API keys for personal and professional use, store each as its own preset.
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+Preset data is stored on-device only. Presets are not synced to any cloud service and are not included in LMSA's chat history export.
+</Note>

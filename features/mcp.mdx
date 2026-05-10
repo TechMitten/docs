@@ -1,0 +1,55 @@
+---
+title: "Use Model Context Protocol (MCP) tool calls in LMSA"
+description: "Connect LMSA to LM Studio's MCP servers so your AI can call external tools — web browsers, file systems, and custom APIs — during a conversation."
+---
+
+Model Context Protocol (MCP) is an open standard that lets AI models call external tools during a conversation. Instead of the model being limited to what it knows from training, MCP gives it the ability to take actions — browse the web, read files from your PC, or call custom APIs — and incorporate the results into its response. LMSA integrates with MCP natively through LM Studio.
+
+## How MCP works in LMSA
+
+When you connect LMSA to an LM Studio server that has MCP enabled, LMSA reads the available tool definitions from LM Studio and makes them available to the model during chat. When the model decides to use a tool, LM Studio executes the call and returns the result, which the model then incorporates into its reply. All of this happens automatically once you have the connection configured.
+
+## Requirements
+
+<Note>
+  MCP is currently supported with LM Studio only. Ollama and OpenRouter connections do not support MCP tool calls. Ensure LM Studio has MCP enabled and your server is running before connecting LMSA.
+</Note>
+
+- LM Studio installed on your PC with at least one model loaded
+- MCP enabled inside LM Studio and at least one MCP server configured
+- LMSA connected to LM Studio on the same network (see [Connecting LM Studio](/providers/lm-studio))
+
+## Enabling MCP
+
+<Steps>
+  <Step title="Configure MCP in LM Studio">
+    Open LM Studio on your PC. Navigate to its MCP settings and enable the MCP server. LM Studio supports loading tool definitions from a `mcp.json` file, which lets you define custom tools, file system access, and other integrations.
+  </Step>
+  <Step title="Start the LM Studio server">
+    Make sure the LM Studio API server is running and your PC and phone are on the same Wi-Fi network.
+  </Step>
+  <Step title="Connect LMSA to LM Studio">
+    Open **Settings** in LMSA, select **LM Studio** as your provider, and enter your server IP and port. LMSA detects the available MCP integrations automatically when it connects.
+  </Step>
+  <Step title="Start chatting">
+    Select a model and begin a conversation. When the model needs to use a tool, it calls it through LM Studio without any extra steps on your part.
+  </Step>
+</Steps>
+
+## What MCP enables
+
+With MCP configured in LM Studio, your AI can:
+
+- Search the web and return live results
+- Read and summarize files from your PC's file system
+- Execute code or scripts and return the output
+- Call custom APIs you define in your `mcp.json` configuration
+- Interact with any other tool you add to your LM Studio MCP setup
+
+<Info>
+  For information on setting up and configuring MCP servers in LM Studio — including `mcp.json` syntax and available tool types — refer to the official LM Studio documentation.
+</Info>
+
+<Tip>
+  MCP tools are most useful with larger, instruction-following models. Smaller models may not reliably decide when and how to call tools. If tool calls are not appearing as expected, try switching to a more capable model in LM Studio.
+</Tip>

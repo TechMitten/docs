@@ -1,0 +1,50 @@
+---
+title: "Enable real-time web search in LMSA with Brave Search"
+description: "Connect LMSA to the Brave Search API so your AI model receives live web results as context before responding — no stale training data cutoffs."
+---
+
+Web search gives your AI access to information that exists right now, not just what was in its training data. When you send a message with web search enabled, LMSA queries Brave Search first, pulls the most relevant results, and includes that content in the context window before the model generates its reply. The whole process is automatic — you chat normally and the model answers with up-to-date information.
+
+## How to enable web search
+
+<Steps>
+  <Step title="Get a Brave Search API key">
+    Go to [brave.com/search/api](https://brave.com/search/api/) and create a free account. The free tier includes enough queries for everyday use. Copy your API key.
+  </Step>
+  <Step title="Open LMSA Settings">
+    Tap the gear icon to open **Settings**.
+  </Step>
+  <Step title="Enter your Brave API key">
+    Scroll to the **Web Search** section and paste your API key into the **Brave Search API key** field.
+  </Step>
+  <Step title="Toggle web search on">
+    Flip the **Web Search** toggle to the on position. The toggle is disabled until a valid API key is entered.
+  </Step>
+</Steps>
+
+<Warning>
+  Web search requires a Brave Search API key. The toggle cannot be enabled without one. If you clear your API key, web search disables automatically.
+</Warning>
+
+## How it works in chat
+
+Once enabled, every message you send triggers a background search query. LMSA:
+
+1. Extracts the key topic from your message.
+2. Queries Brave Search with that topic.
+3. Fetches and cleans the top results.
+4. Injects the search content into the model's context for that turn.
+
+You will see a web search indicator appear below your message while the results are being fetched. The model then uses those results alongside your message to produce its answer.
+
+<Info>
+  Web search results are scoped to the current turn only. Each new message triggers a fresh search rather than accumulating results across the conversation.
+</Info>
+
+## Privacy
+
+Brave Search is built on a privacy-respecting index — it does not profile users or attach tracking identifiers to queries. Your search terms go directly from LMSA to Brave's API and are not routed through any LMSA servers.
+
+<Tip>
+  If you only need web search for certain conversations, you can toggle it on and off in Settings between chats. There is no need to re-enter your API key each time.
+</Tip>

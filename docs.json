@@ -1,0 +1,78 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "almond",
+  "name": "LMSA",
+  "colors": {
+    "primary": "#b6556b",
+    "light": "#404a53",
+    "dark": "#b9b9be"
+  },
+  "favicon": "https://media.brand.dev/235fa1b9-cc6a-462c-8fdc-b33365a0ce63.png",
+  "navbar": {
+    "primary": {
+      "type": "github",
+      "href": "https://github.com/TechMitten/LMSA"
+    }
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quickstart",
+              "installation"
+            ]
+          },
+          {
+            "group": "Connecting AI Providers",
+            "pages": [
+              "providers/lm-studio",
+              "providers/ollama",
+              "providers/openrouter",
+              "providers/custom-endpoint"
+            ]
+          },
+          {
+            "group": "Core Features",
+            "pages": [
+              "features/chat",
+              "features/personas-templates",
+              "features/web-search",
+              "features/image-generation",
+              "features/file-upload",
+              "features/tts",
+              "features/mcp"
+            ]
+          },
+          {
+            "group": "Settings & Customization",
+            "pages": [
+              "settings/connection-presets",
+              "settings/model-parameters",
+              "settings/privacy-security",
+              "settings/ui-customization"
+            ]
+          },
+          {
+            "group": "Import & Export",
+            "pages": [
+              "data/import-export",
+              "data/character-cards"
+            ]
+          },
+          {
+            "group": "Help",
+            "pages": [
+              "help/faq",
+              "help/troubleshooting"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

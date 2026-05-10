@@ -1,0 +1,126 @@
+---
+title: "Tune AI model parameters in LMSA for better responses"
+description: "Adjust temperature, max tokens, Top-P, reasoning level, system prompt, and more to control exactly how the AI generates responses in every LMSA conversation."
+---
+
+LMSA gives you direct control over the inference parameters sent to the AI model on every request. You can fine-tune how creative, focused, long-winded, or thoughtful the model is — all from within the app. These settings live in **Settings → Step 2 (Options)** under the **AI Settings** group.
+
+## Parameters at a glance
+
+| Parameter | Default | What it does |
+|---|---|---|
+| Temperature | `0.3` | Controls randomness in token selection |
+| Max Output Tokens | `0` (unlimited) | Caps the length of the AI's response |
+| Top-P | Server default | Nucleus sampling threshold |
+| Repetition Penalty | Server default | Reduces repeated phrases |
+| Reasoning Level | `Default` | Thinking effort for reasoning models |
+| Reasoning Timeout | `300 s` | Max wait time for reasoning before stopping |
+| Default Model | None | Model that auto-selects when LMSA loads |
+
+---
+
+## Temperature
+
+Temperature controls how random or deterministic the model's word choices are. The slider ranges from **0** to **2**.
+
+- **Low (0.1 – 0.3)** — More focused and predictable. Best for factual Q&A, coding, and structured tasks.
+- **Medium (0.5 – 0.7)** — Balanced creativity and coherence. Good for general conversation.
+- **High (0.8 – 1.5+)** — More creative and varied. Suited for storytelling, brainstorming, and roleplay.
+
+<Tip>
+The default of 0.3 works well for most tasks. Raise it toward 0.7–1.0 when you want more imaginative or varied responses, and lower it toward 0.1 for precise, factual answers.
+</Tip>
+
+<Note>
+The temperature slider is locked by default to prevent accidental changes mid-conversation. Tap the **lock icon** next to the temperature label to unlock it before adjusting.
+</Note>
+
+---
+
+## Max Output Tokens
+
+This setting limits how many tokens (roughly three-quarters of a word each) the model can produce in a single response. The default value of **0** means no limit — the server decides.
+
+- Set a specific number to cap very long responses and reduce wait times.
+- Tap the **Default** button next to the input field to clear the limit and return to server default.
+- Only whole numbers are accepted; non-numeric characters are stripped automatically.
+
+---
+
+## Top-P (Nucleus Sampling)
+
+Top-P restricts token selection to the smallest set of likely candidates whose cumulative probability exceeds the threshold you set. A lower value (e.g. 0.5) makes responses tighter; a higher value (e.g. 0.95) allows more diverse word choices. This parameter is sent directly to the server when supported.
+
+---
+
+## Repetition Penalty
+
+The repetition penalty discourages the model from repeating the same phrases or ideas. Increasing this value reduces looping or echo-like output. It is passed through to the inference backend when supported.
+
+---
+
+## System Prompt
+
+The system prompt is a block of instructions sent to the model at the start of every conversation — before any of your messages. Use it to set a persona, define a task, or constrain the model's behavior.
+
+<Steps>
+  <Step title="Go to Settings → Step 3 (Prompt)">
+    Navigate to the **Prompt** step using the Next button from Options, or by tapping the step indicator at the top of the Settings modal.
+  </Step>
+  <Step title="Tap Edit">
+    Tap the **Edit** button to open the system prompt editor.
+  </Step>
+  <Step title="Write your instructions">
+    Type your instructions. These are sent to the model before every chat message.
+  </Step>
+  <Step title="Save (optional)">
+    Tap **Save to list** to save the prompt as a reusable entry you can restore later without retyping.
+  </Step>
+</Steps>
+
+<Info>
+LMSA ships with a library of built-in prompt templates (Math Tutor, Code Assistant, Story Writer, etc.) accessible from the Templates screen. Applying a template populates the system prompt for you.
+</Info>
+
+---
+
+## Reasoning Level
+
+For models that support extended thinking (such as DeepSeek-R1 and similar reasoning models), you can control how much effort the model invests before responding.
+
+| Level | Behavior |
+|---|---|
+| **Default** | Model uses its built-in reasoning behavior |
+| **Disabled** | Thinking is turned off entirely |
+| **Low** | Minimal reasoning — fastest responses |
+| **Medium** | Balanced thinking and speed |
+| **High** | Maximum reasoning effort — slowest but most thorough |
+
+Find this in **Settings → Options → AI Settings → Reasoning Level**.
+
+---
+
+## Reasoning Timeout
+
+When a reasoning model is thinking, LMSA waits up to the timeout before stopping the request. The default is **300 seconds (5 minutes)**. You can reduce this if you prefer faster cut-offs on long-running reasoning.
+
+---
+
+## Default Model
+
+You can pin a specific model so it is pre-selected every time LMSA loads, instead of reverting to the server's first available model. Once set, LMSA attempts to activate that model automatically on launch.
+
+<AccordionGroup>
+  <Accordion title="How to set a default model">
+    In the model picker (tap the model name in the chat header), select any model and look for the **Set as Default** option. You can also clear the default from the same menu.
+  </Accordion>
+  <Accordion title="What happens if the default model isn't available?">
+    If the default model is not present on the connected server — for example, because you switched presets — LMSA falls back to the first model returned by the server.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Hide Thinking
+
+When **Hide Thinking** is enabled, the internal reasoning chain produced by thinking models is not displayed in the chat. The model still reasons; you just don't see the intermediate steps. Toggle this in **Settings → Options → AI Settings → Hide Thinking**.

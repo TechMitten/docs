@@ -1,0 +1,102 @@
+---
+title: "Connect LMSA to an Ollama server over your Wi-Fi network"
+description: "Run open-source AI models locally with Ollama on your PC or Mac and connect to them from your Android device using LMSA over Wi-Fi."
+---
+
+Ollama is an open-source tool that makes it easy to download and run large language models on your own computer. It exposes a local HTTP server that LMSA can connect to over your Wi-Fi network, keeping your conversations entirely on your local network.
+
+## Before you start
+
+Both your PC and your Android device must be connected to the **same Wi-Fi network**. LMSA communicates with Ollama over your local network, so this is required.
+
+## Set up Ollama on your PC
+
+<Steps>
+  <Step title="Install Ollama">
+    Download and install Ollama from [ollama.com](https://ollama.com) on your Windows, macOS, or Linux computer.
+  </Step>
+  <Step title="Configure Ollama to accept network connections">
+    By default, Ollama only listens on `localhost`, which means your Android device cannot reach it. You need to set the `OLLAMA_HOST` environment variable to allow connections from other devices on your network.
+
+    - **Windows**: Open **System Properties → Environment Variables** and add a new system variable `OLLAMA_HOST` with the value `0.0.0.0`.
+    - **macOS**: Add the following line to your shell profile (`~/.zshrc` or `~/.bash_profile`) and restart your terminal:
+      ```bash
+      export OLLAMA_HOST=0.0.0.0
+      ```
+    - **Linux (systemd)**: Edit the Ollama service override:
+      ```bash
+      sudo systemctl edit ollama
+      ```
+      Add:
+      ```ini
+      [Service]
+      Environment="OLLAMA_HOST=0.0.0.0"
+      ```
+      Then run `sudo systemctl restart ollama`.
+
+    After changing this setting, restart Ollama.
+  </Step>
+  <Step title="Pull a model">
+    Open a terminal and pull a model. For example:
+    ```bash
+    ollama pull llama3
+    ```
+    You can browse available models at [ollama.com/library](https://ollama.com/library).
+  </Step>
+  <Step title="Find your PC's local IP address">
+    You need the PC's local network IP address — not `localhost` or `127.0.0.1`.
+
+    - **Windows**: Open a terminal and run `ipconfig`. Look for the **IPv4 Address** under your Wi-Fi adapter (for example, `192.168.1.45`).
+    - **macOS**: Open **System Settings → Wi-Fi → Details** and copy the **IP Address** field.
+    - **Linux**: Run `ip addr show` and look for your Wi-Fi interface's `inet` address.
+  </Step>
+</Steps>
+
+<Warning>
+  If you skip the `OLLAMA_HOST=0.0.0.0` step, Ollama will only be reachable from `localhost` on your PC. LMSA will not be able to connect from your Android device.
+</Warning>
+
+## Connect LMSA to Ollama
+
+<Steps>
+  <Step title="Open Settings in LMSA">
+    Tap the settings icon in the top-right corner of the LMSA home screen.
+  </Step>
+  <Step title="Select Local Server">
+    On the **Connection** step, tap **Local Server**.
+  </Step>
+  <Step title="Enable Ollama mode">
+    Tap **Configure** and turn on the **Ollama** toggle. This switches LMSA to Ollama's API format, which is required for correct model discovery and chat.
+  </Step>
+  <Step title="Enter your PC's IP and port">
+    Enter your PC's local IP address (for example, `192.168.1.45`) and port `11434` (Ollama's default port). Tap **Save**.
+  </Step>
+  <Step title="Start chatting">
+    LMSA will load the list of available Ollama models. Select a model from the model picker and start chatting.
+  </Step>
+</Steps>
+
+<Note>
+  When Ollama mode is enabled, LMSA automatically uses Ollama's OpenAI-compatible API at `/v1/chat/completions`. You do not need to configure this manually.
+</Note>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="LMSA can't connect to Ollama">
+    - Confirm that you set `OLLAMA_HOST=0.0.0.0` and restarted Ollama after making the change.
+    - Make sure both devices are on the **same Wi-Fi network**.
+    - Verify that port `11434` is not blocked by a firewall on your PC.
+    - You can test from another terminal on your PC with: `curl http://localhost:11434/api/tags` — if this returns a model list, Ollama is running correctly.
+  </Accordion>
+  <Accordion title="No models appear in LMSA">
+    At least one model must be pulled before LMSA can list them. Run `ollama pull <model-name>` and then refresh the connection in LMSA settings.
+  </Accordion>
+  <Accordion title="Connection works but I can't select a model">
+    LMSA detects the currently running Ollama model automatically. If no model is actively running, select one from the model picker in LMSA to load it.
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+  Use LMSA's **Saved Presets** feature in the Connection settings panel to save your Ollama server details. This lets you switch between multiple server configurations quickly if you run Ollama on more than one machine.
+</Tip>

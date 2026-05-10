@@ -1,0 +1,67 @@
+---
+title: "How to chat with AI models using the LMSA Android app"
+description: "Send messages, render rich markdown and LaTeX, use Smart Reply and auto-titles, and control thinking mode for reasoning models — all in the LMSA chat view."
+---
+
+LMSA's chat interface is the heart of the app. Every conversation you have — whether with a local model on your PC or a cloud model via OpenRouter — runs through the same clean, full-featured chat view. Messages are stored locally on your device, and the interface renders markdown, code, and math natively so responses look exactly as the model intended.
+
+## Starting a conversation
+
+<Steps>
+  <Step title="Open LMSA and tap the compose icon">
+    Tap the new chat icon in the top bar (or open the sidebar and tap **New Chat**) to start a fresh conversation.
+  </Step>
+  <Step title="Select a model">
+    Tap the model selector at the top of the screen. LMSA loads the list of available models from your connected provider. Tap any model to activate it.
+  </Step>
+  <Step title="Type your message and send">
+    Type in the input bar at the bottom of the screen, then tap the **Send** button. By default, the **Enter** key inserts a new line. You can change this in **Settings** — toggle **Enter sends message** to have Enter send and Shift+Enter insert a line break instead.
+  </Step>
+</Steps>
+
+## Rich message rendering
+
+LMSA renders AI responses with full formatting support — you are not reading raw text.
+
+<AccordionGroup>
+  <Accordion title="Markdown">
+    Bold, italic, strikethrough, tables, ordered and unordered lists, block quotes, and horizontal rules all render natively inside message bubbles.
+  </Accordion>
+  <Accordion title="Syntax-highlighted code blocks">
+    Fenced code blocks are highlighted for their language automatically. Tap the copy icon on any code block to copy the contents to your clipboard.
+  </Accordion>
+  <Accordion title="LaTeX math (KaTeX)">
+    Inline math uses single dollar signs: `$E = mc^2$`. Display math uses double dollar signs: `$$\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}$$`. LMSA renders both using KaTeX with no extra setup required.
+  </Accordion>
+</AccordionGroup>
+
+## Thinking and reasoning mode
+
+Some models — such as DeepSeek-R1 — produce a chain-of-thought before their final answer. LMSA exposes this as a collapsible **Reasoning Process** section inside the message bubble.
+
+- **Show or hide thinking:** Tap the **[Hide] / [Show]** toggle inside any reasoning block to collapse or expand it for that message. You can also set a global default in **Settings → Hide thinking** to collapse all reasoning blocks automatically.
+- **Reasoning level:** For models that accept an explicit effort hint, go to **Settings → Reasoning level** and choose from **Default**, **Low**, **Medium**, **High**, or **Disabled**. This controls how much compute the model spends on internal reasoning before replying.
+
+<Note>
+  Reasoning mode only appears when your selected model produces `<think>` blocks. If you do not see it, your current model does not support chain-of-thought output.
+</Note>
+
+## Smart Reply (Beta)
+
+After each AI response, LMSA can generate a row of quick-reply suggestions tailored to the conversation so far. Tap any suggestion to send it immediately.
+
+Enable Smart Reply in **Settings → Smart Reply (Beta)**. Because generating suggestions requires an extra model call, this feature has usage limits on the free tier.
+
+## Auto-Titles
+
+When you start a new chat, LMSA can ask the model to generate a short, descriptive title based on your first exchange — so your chat history stays organized without manual renaming.
+
+Toggle this in **Settings → Auto-generate titles**.
+
+## Chat history
+
+Every conversation is saved locally as it progresses. Open the sidebar (swipe right or tap the menu icon) to browse all past chats, tap any entry to resume it, or swipe to delete one.
+
+<Tip>
+  Tap and hold any message bubble to reveal quick actions: copy the message text, delete the message, or regenerate the response.
+</Tip>

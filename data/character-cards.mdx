@@ -1,0 +1,116 @@
+---
+title: "Import and create Character Card V2 personas in LMSA"
+description: "Use the Character Card V2 standard to import, create, and apply roleplay personas in LMSA — with personality, scenario, dialogue, and opening messages."
+---
+
+Character Cards are structured persona files that define a roleplay character in detail: who they are, how they speak, what situation they're in, and how they open a conversation. LMSA supports the **Character Card V2** specification — the same industry-standard format used by most AI roleplay tools — so you can import cards created elsewhere or build your own from scratch.
+
+## What is Character Card V2?
+
+Character Card V2 (`chara_card_v2`, spec version `2.0`) is a structured data format that encodes a roleplay character's complete profile into a set of named fields. Because it's an open standard, a card created in one application can be imported and used in another.
+
+### Card fields
+
+| Field | Purpose |
+|---|---|
+| `name` | The character's display name |
+| `description` | Background, appearance, and lore for the character |
+| `personality` | Key personality traits that shape how the character responds |
+| `scenario` | The context or setting for the roleplay — where and when the story takes place |
+| `first_mes` | The character's opening message, sent at the start of every new chat |
+| `mes_example` | Example dialogue exchanges that demonstrate the character's speech style and mannerisms |
+
+---
+
+## Import a character card
+
+LMSA can import Character Card V2 data from two file formats:
+
+- **`.json`** — a plain JSON file containing the card data
+- **`.png`** — an image with the card data embedded in the file's metadata (a common format from tools like SillyTavern and Character Hub)
+
+<Steps>
+  <Step title="Obtain a character card file">
+    Download a `.json` or `.png` character card from a source you trust, or export one from another app.
+  </Step>
+  <Step title="Open the Templates screen">
+    From the LMSA main screen, tap **Templates**.
+  </Step>
+  <Step title="Tap Import">
+    Tap the **Import** button or icon in the Templates screen.
+  </Step>
+  <Step title="Select your file">
+    Use Android's file picker to navigate to your `.json` or `.png` file and select it. LMSA reads the embedded card data and adds the character to your templates list.
+  </Step>
+</Steps>
+
+<Info>
+When you import a `.png` character card, LMSA reads the character data from the image's embedded metadata — not from the image itself. The character's portrait (if any) is stored as part of the card data.
+</Info>
+
+---
+
+## Create a character card in LMSA
+
+You can build a Character Card V2 entirely within LMSA, either by filling in the fields manually or by using AI generation to produce a complete card automatically.
+
+### Manual creation
+
+<Steps>
+  <Step title="Open Templates">
+    Tap **Templates** from the main screen.
+  </Step>
+  <Step title="Tap New Template">
+    Tap the **New Template** button (the plus icon).
+  </Step>
+  <Step title="Switch to Character Card V2 mode">
+    In the template editor, switch the mode selector from **Basic** to **Character Card V2**. The editor reveals the full set of card fields.
+  </Step>
+  <Step title="Fill in the fields">
+    Complete each field — `name`, `description`, `personality`, `scenario`, `first_mes`, and `mes_example`. All fields are optional, but the more detail you provide, the more consistent the character's behavior will be.
+  </Step>
+  <Step title="Save the card">
+    Tap **Save**. The card appears in your custom templates list.
+  </Step>
+</Steps>
+
+### AI-generated character cards
+
+<Note>
+AI character card generation requires **LMSA Premium**.
+</Note>
+
+<Steps>
+  <Step title="Open New Template in Character Card V2 mode">
+    Follow steps 1–3 from the manual creation flow above.
+  </Step>
+  <Step title="Tap AI Generate">
+    Tap the **AI Generate** button in the editor. Enter a brief description of the character you want — name, role, genre, or any details you have in mind.
+  </Step>
+  <Step title="Review and edit">
+    LMSA sends your description to the connected model and populates all the card fields with generated content. Review each field and edit anything that doesn't fit your vision.
+  </Step>
+  <Step title="Save">
+    Tap **Save** to keep the generated card in your templates.
+  </Step>
+</Steps>
+
+---
+
+## Use a character card in a chat
+
+<Steps>
+  <Step title="Open Templates">
+    From the main screen, tap **Templates**.
+  </Step>
+  <Step title="Select your character card">
+    Find the character card in your templates list and tap it to select it.
+  </Step>
+  <Step title="Start chatting">
+    Tap **Start Chatting**. LMSA applies the card's system prompt configuration and sends the `first_mes` opening message to begin the roleplay.
+  </Step>
+</Steps>
+
+<Tip>
+You can edit a character card at any time from the Templates screen. Changes take effect the next time you start a new chat with that card — existing conversations are not modified.
+</Tip>

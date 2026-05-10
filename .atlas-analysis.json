@@ -1,0 +1,102 @@
+{
+  "projectType": "saas",
+  "projectName": "LMSA",
+  "projectDescription": "LMSA is a premium Android app that connects to local AI servers (LM Studio, Ollama) or cloud models (OpenRouter) to provide a private, feature-rich chat interface for large language models.",
+  "theme": "almond",
+  "primaryColor": "#b6556b",
+  "lightColor": "#404a53",
+  "darkColor": "#b9b9be",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quickstart",
+              "installation"
+            ]
+          },
+          {
+            "group": "Connecting AI Providers",
+            "pages": [
+              "providers/lm-studio",
+              "providers/ollama",
+              "providers/openrouter",
+              "providers/custom-endpoint"
+            ]
+          },
+          {
+            "group": "Core Features",
+            "pages": [
+              "features/chat",
+              "features/personas-templates",
+              "features/web-search",
+              "features/image-generation",
+              "features/file-upload",
+              "features/tts",
+              "features/mcp"
+            ]
+          },
+          {
+            "group": "Settings & Customization",
+            "pages": [
+              "settings/connection-presets",
+              "settings/model-parameters",
+              "settings/privacy-security",
+              "settings/ui-customization"
+            ]
+          },
+          {
+            "group": "Import & Export",
+            "pages": [
+              "data/import-export",
+              "data/character-cards"
+            ]
+          },
+          {
+            "group": "Help",
+            "pages": [
+              "help/faq",
+              "help/troubleshooting"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Connect to LM Studio, Ollama, OpenRouter, or any OpenAI-compatible endpoint",
+    "Privacy-first: conversations stay on device and local network",
+    "Persona & Character Card V2 support with AI-powered generation",
+    "Real-time web search via Brave Search API",
+    "AI image generation via /image command",
+    "Multimodal file and image uploads with OCR",
+    "Text-to-Speech with Android native engine",
+    "Model Context Protocol (MCP) support for LM Studio",
+    "Biometric unlock (fingerprint/face/PIN)",
+    "Advanced reasoning controls (Thinking Mode, Reasoning Level)",
+    "Smart Reply suggestions and Auto-Title generation",
+    "Connection presets for quick server switching",
+    "LaTeX math rendering and syntax-highlighted code blocks",
+    "Export/import chat history and character data",
+    "One-time purchase to remove ads — no subscriptions"
+  ],
+  "publicApiSurface": [
+    "Local server connection (IP + Port for LM Studio/Ollama)",
+    "OpenRouter API key configuration",
+    "Custom OpenAI-compatible endpoint configuration",
+    "LM Studio API token (for authenticated servers)",
+    "Brave Search API key (for web search feature)",
+    "/image command (AI image generation in chat)",
+    "Character Card V2 import (.json / image-embedded .png)",
+    "LM Studio profile import",
+    "Chat history export",
+    "MCP server integration via mcp.json",
+    "Model parameters: temperature, top-p, repetition penalty, max tokens",
+    "Reasoning level control: default, low, medium, high, disabled",
+    "TTS voice selection"
+  ]
+}

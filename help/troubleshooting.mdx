@@ -1,0 +1,187 @@
+---
+title: "Fix common LMSA connection and configuration problems"
+description: "Step-by-step solutions for the most common LMSA problems — local server unreachable, OpenRouter API errors, missing models, thinking mode loops, and more."
+---
+
+Most LMSA issues fall into one of a few categories: a local server that isn't reachable, a misconfigured API key, or a model that hasn't been loaded yet. Work through the relevant section below to resolve your issue. If you're still stuck, email [support@lmsa.app](mailto:support@lmsa.app).
+
+<AccordionGroup>
+
+  <Accordion title="Cannot connect to LM Studio or Ollama">
+    The most common cause is a network or configuration mismatch between your phone and your PC. Work through these steps in order.
+
+    <Steps>
+      <Step title="Confirm the server is running">
+        LMSA connects to a server that you start on your PC — it does not start the server for you.
+
+        - **LM Studio:** Open LM Studio, load a model, and click **Start Server** in the Local Server tab. The status should show a green indicator and a port number (default: **1234**).
+        - **Ollama:** Ollama runs as a background service. Confirm it is active by opening a terminal and running `ollama list`. If it is not running, start it with `ollama serve`.
+      </Step>
+
+      <Step title="Check that both devices are on the same Wi-Fi network">
+        Your phone and PC must be connected to the **same Wi-Fi network** — the same router and the same SSID.
+
+        <Warning>
+          Guest networks and networks with different SSIDs (even on the same router) often block device-to-device traffic. If you are on a guest network, switch to the main network on both devices.
+        </Warning>
+      </Step>
+
+      <Step title="Find your PC's local IP address">
+        You need your PC's local IP address (not the public internet address) to configure LMSA.
+
+        - **Windows:** Open Command Prompt and run `ipconfig`. Look for the **IPv4 Address** under your Wi-Fi adapter — it will look like `192.168.x.x`.
+        - **Mac:** Open Terminal and run `ifconfig | grep "inet "`, or go to **System Settings → Network → Wi-Fi → Details** and note the IP address.
+
+        Enter this IP address in LMSA under **Settings → Connection → Configure**.
+      </Step>
+
+      <Step title="Verify the correct port">
+        Default ports are:
+
+        | Provider | Default port |
+        |----------|-------------|
+        | LM Studio | `1234` |
+        | Ollama | `11434` |
+
+        If you changed the port in your server settings, use the custom port you configured instead.
+      </Step>
+
+      <Step title="For Ollama: set OLLAMA_HOST to 0.0.0.0">
+        By default, Ollama only listens on `localhost` (your PC itself) and will not accept connections from other devices on the network.
+
+        To allow LMSA to connect, set the `OLLAMA_HOST` environment variable before starting Ollama:
+
+        - **Windows (PowerShell):**
+          ```powershell
+          $env:OLLAMA_HOST = "0.0.0.0"
+          ollama serve
+          ```
+        - **Mac / Linux (Terminal):**
+          ```bash
+          OLLAMA_HOST=0.0.0.0 ollama serve
+          ```
+
+        <Note>
+          On Windows, you can also set this as a permanent system environment variable in **System Properties → Environment Variables** so you don't need to set it each time.
+        </Note>
+      </Step>
+
+      <Step title="Check your firewall">
+        Your PC's firewall may be blocking the incoming connection from your phone.
+
+        - **Windows Defender Firewall:** Open **Windows Security → Firewall & network protection → Allow an app through firewall** and ensure LM Studio or Ollama is allowed on private networks.
+        - **macOS Firewall:** Go to **System Settings → Privacy & Security → Firewall** and check that incoming connections to LM Studio or Ollama are not being blocked.
+
+        You can also test connectivity by trying to open `http://<your-pc-ip>:<port>` in a browser on your phone. If you can reach it, the firewall is not the issue.
+      </Step>
+
+      <Step title="Check the LMSA status indicator">
+        In LMSA, go to **Settings → Connection**. If the status reads **Not configured**, no IP address or port has been saved yet. Tap **Configure** to enter your server's IP and port, then save.
+
+        After saving, return to the main chat screen and try sending a message. If the connection succeeds, the model list will populate automatically.
+      </Step>
+    </Steps>
+  </Accordion>
+
+  <Accordion title="OpenRouter is not working">
+    <Steps>
+      <Step title="Verify your API key">
+        Go to [openrouter.ai](https://openrouter.ai) and sign in to your dashboard. Copy your API key directly from the dashboard and paste it into LMSA under **Settings → Connection → OpenRouter**.
+
+        <Warning>
+          Do not type the API key manually — copy and paste it to avoid typos. Even a single incorrect character will cause authentication to fail.
+        </Warning>
+      </Step>
+
+      <Step title="Check your OpenRouter credits or free quota">
+        Some models on OpenRouter require credits. If your account has no credits and you have selected a paid model, requests will fail.
+
+        To test whether your key is working, switch to a free model in the model selector (free models are labelled in the OpenRouter model list) and try sending a message.
+      </Step>
+
+      <Step title="Confirm the correct provider is selected">
+        In LMSA Settings → Connection, make sure the **OpenRouter** option is selected, not Local Server or Custom Endpoint. Only one provider can be active at a time.
+      </Step>
+    </Steps>
+  </Accordion>
+
+  <Accordion title="No models listed / model not loading">
+    LMSA retrieves the model list from your connected provider at connection time. If the list is empty, the provider either has no model loaded or LMSA cannot reach it.
+
+    <Steps>
+      <Step title="Load a model on your server first">
+        LMSA cannot list models that have not been loaded or pulled yet.
+
+        - **LM Studio:** Open LM Studio and load a model before starting the server. The server must be running with an active model for LMSA to see it.
+        - **Ollama:** Run `ollama pull <model-name>` to download a model, then confirm Ollama is running with `ollama list`.
+      </Step>
+
+      <Step title="Verify the correct provider toggle">
+        Go to **Settings → Connection** and confirm the active provider matches the server you are running. If LM Studio is running but OpenRouter is selected, LMSA will not find your local models.
+      </Step>
+
+      <Step title="Refresh the model list">
+        After confirming the server has a model loaded, return to the LMSA chat screen and use the model selector to refresh. If models still don't appear, check that the connection is working by reviewing the steps in the "Cannot connect" section above.
+      </Step>
+    </Steps>
+  </Accordion>
+
+  <Accordion title="Messages send but no response, or response cuts off">
+    <Steps>
+      <Step title="Increase Max Tokens">
+        If responses are cut off mid-sentence, the **Max Tokens** setting may be too low. Go to **Settings** and increase Max Tokens, or set it to **0** to allow unlimited output length.
+      </Step>
+
+      <Step title="Confirm the model is still loaded">
+        Local servers can unload models automatically after periods of inactivity. Check LM Studio or Ollama on your PC to confirm a model is still actively loaded. Reload it if necessary, then retry in LMSA.
+      </Step>
+
+      <Step title="Increase the Reasoning Timeout for thinking models">
+        For models that perform extended reasoning (like DeepSeek-R1), LMSA applies a default timeout of **5 minutes**. If the model is still working when the timeout expires, the response will be cut off.
+
+        Go to **Settings** and increase the **Reasoning Timeout** value to give the model more time to complete its response.
+      </Step>
+    </Steps>
+  </Accordion>
+
+  <Accordion title="Thinking mode causes repetitive output loops">
+    Some models — particularly certain versions of Qwen — behave erratically when reasoning prompts are active. You may see the model repeat phrases like "wait, I should" dozens of times before producing a response.
+
+    <Note>
+      This is a known behavior of specific model versions, not a bug in LMSA.
+    </Note>
+
+    <Steps>
+      <Step title="Disable reasoning for that model">
+        Go to **Settings** and set **Reasoning Level** to **Disabled**. This prevents LMSA from sending reasoning-specific instructions to the model, which resolves the loop behavior for affected models.
+      </Step>
+
+      <Step title="Try a different model">
+        If you need extended reasoning, switch to a model that is designed for it, such as DeepSeek-R1 or a model explicitly listed as a reasoning model by its provider.
+      </Step>
+    </Steps>
+  </Accordion>
+
+  <Accordion title="Biometric unlock is not available">
+    The biometric unlock option in LMSA requires that your Android device has biometric authentication (fingerprint or face unlock) already configured at the system level.
+
+    <Steps>
+      <Step title="Set up biometrics in Android settings">
+        Go to your device's **Settings → Security → Biometrics** (the exact path varies by manufacturer) and enroll at least one fingerprint or set up face recognition.
+      </Step>
+
+      <Step title="Enable biometric unlock in LMSA">
+        Once biometrics are enrolled on your device, return to LMSA **Settings → Security** and enable **Biometric Unlock**. The option will be available as soon as a biometric is registered on your device.
+      </Step>
+    </Steps>
+
+    <Note>
+      If your device does not have a fingerprint sensor or face unlock hardware, biometric authentication will not be available regardless of settings.
+    </Note>
+  </Accordion>
+
+</AccordionGroup>
+
+## Still need help?
+
+If none of the steps above resolve your issue, reach out directly. Email [support@lmsa.app](mailto:support@lmsa.app) with a description of the problem, your Android version, and which provider you are trying to connect to. The LMSA team responds to all support requests personally.
