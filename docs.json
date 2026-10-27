@@ -7,7 +7,7 @@
     "light": "#07C983",
     "dark": "#15803D"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/logo/lmsa-icon.png",
   "navigation": {
     "pages": [
       {
@@ -85,8 +85,8 @@
     }
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/lmsa-icon.png",
+    "dark": "/logo/lmsa-icon.png"
   },
   "navbar": {
     "links": [
