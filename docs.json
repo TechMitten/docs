@@ -7,7 +7,10 @@
     "light": "#07C983",
     "dark": "#15803D"
   },
-  "favicon": "/logo/lmsa-icon.png",
+  "favicon": {
+    "light": "/images/656739535_122099940428914837_7449315625009282390_n-removebg-preview.png",
+    "dark": "/images/656739535_122099940428914837_7449315625009282390_n-removebg-preview.png"
+  },
   "navigation": {
     "pages": [
       {
@@ -85,8 +88,9 @@
     }
   },
   "logo": {
-    "light": "/logo/lmsa-icon.png",
-    "dark": "/logo/lmsa-icon.png"
+    "light": "/images/656739535_122099940428914837_7449315625009282390_n-removebg-preview.png",
+    "dark": "/images/656739535_122099940428914837_7449315625009282390_n-removebg-preview.png",
+    "href": "https://lmsa.app"
   },
   "navbar": {
     "links": [
