@@ -1,0 +1,56 @@
+---
+title: "Context length"
+description: "Adjust how much conversation history the AI model can remember and use when generating responses."
+keywords:
+  - "context length"
+  - "tokens"
+  - "AI memory"
+  - "conversation history"
+  - "settings"
+---
+
+Context length controls how much conversation history your AI model can remember and use when generating responses. It is measured in tokens. A larger context length allows the model to consider more previous messages, while a smaller one limits how far back it can look.
+
+## How to adjust context length
+
+<Steps>
+  <Step title="Open Settings">
+    Open the sidebar and tap **Settings**.
+  </Step>
+  <Step title="Find Context Length">
+    Locate **Context Length** under the chat options.
+  </Step>
+  <Step title="Set a value">
+    Use the slider to quickly select popular preset values like 256, 512, 2048, 4096, and up to 200k tokens. For custom values, type a number directly in the text field below the slider. The minimum allowed is **256 tokens**.
+  </Step>
+  <Step title="Enable override">
+    Enable the **Override** toggle to use your custom value instead of the provider's default.
+  </Step>
+</Steps>
+
+## Where it applies
+
+- **Local Server (LM Studio / Ollama):** sets the context window for local chat requests.
+- **OpenRouter:** overrides the model's default context length. When enabled, it also activates automatic conversation compaction to stay within the limit.
+- **Custom Endpoint:** applies your setting to OpenAI-compatible servers.
+
+## Provider defaults
+
+When **Override** is disabled, LMSA uses the context length your AI provider publishes. LM Studio shows a **Context Snapshot** card displaying your current provider, model, and its native context limits.
+
+## When to adjust
+
+- **Increase it** if you want longer conversations with better memory of earlier messages, especially for complex multi-turn topics.
+- **Decrease it** to reduce processing time and latency, or if you run out of VRAM on a local model.
+- **Use a smaller value** for lightweight models or slower hardware.
+- **Use a larger value** for detailed analysis, coding tasks, or when you need the model to remember many prior turns.
+
+<Info>
+  Context length is separate from **Max Output Tokens**: the former controls input history, the latter controls response length.
+</Info>
+
+<Warning>
+  - Larger context lengths use more memory and may be slower on weaker hardware.
+  - Not all models support the full context limit you set. Your model may truncate or ignore your override if it exceeds the model's hard maximum.
+  - Web Search and Image Generation use independent token limits separate from this setting.
+</Warning>

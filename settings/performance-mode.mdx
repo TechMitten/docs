@@ -1,0 +1,39 @@
+---
+title: "Performance mode"
+description: "Optimize the app's UI and response handling for a smooth, lag-free experience on lower-end devices."
+keywords:
+  - "performance mode"
+  - "low-end device"
+  - "UI optimization"
+  - "settings"
+---
+
+Performance Mode optimizes the application's user interface and response handling to ensure a smooth, lag-free experience on lower-end devices or older hardware.
+
+## Key optimizations
+
+When Performance Mode is enabled, LMSA makes the following changes:
+
+- **Streaming disabled:** AI responses load and appear all at once rather than word-by-word. This significantly reduces continuous DOM layout calculations and rendering updates.
+- **Visual simplification:** Disables CSS animations, transitions, backdrop blur filters, and shadows across all menus, modals, and tooltips.
+- **Thinking output lock:** Automatically unchecks and disables the **Hide Thinking** setting to conserve device processing resources.
+
+## Smart auto-enable
+
+LMSA automatically detects devices with limited hardware resources (fewer than 6 CPU cores and less than 4GB of RAM) and enables Performance Mode by default.
+
+If auto-enabled, you can turn it off manually in **Settings > Device and Privacy**, though you may experience slower UI animations or interface lag.
+
+## How to enable or disable manually
+
+<Steps>
+  <Step title="Open Settings">
+    Open the sidebar and tap **Settings**.
+  </Step>
+  <Step title="Go to Device and Privacy">
+    Navigate to the **Device and Privacy** tab.
+  </Step>
+  <Step title="Toggle Performance Mode">
+    Find **Performance Mode** and toggle it on or off as needed.
+  </Step>
+</Steps>

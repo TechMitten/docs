@@ -1,0 +1,54 @@
+---
+title: "OpenRouter setup"
+description: "Use OpenRouter to access hundreds of cloud AI models without a local server."
+sidebarTitle: "OpenRouter"
+keywords:
+  - "OpenRouter"
+  - "cloud AI"
+  - "API key"
+  - "setup"
+  - "model selection"
+---
+
+OpenRouter is a cloud AI service that lets you access hundreds of hosted models using your own API key. When OpenRouter is enabled, LMSA bypasses the local server entirely and sends requests directly to OpenRouter's cloud API.
+
+<Steps>
+  <Step title="Create an OpenRouter account">
+    Go to [openrouter.ai](https://openrouter.ai) and create a free account. Generate an API key from your dashboard.
+  </Step>
+  <Step title="Enable OpenRouter in LMSA">
+    Open **Settings** in LMSA and scroll to the **Use OpenRouter (Cloud AI)** toggle. Switch it on.
+  </Step>
+  <Step title="Enter your API key">
+    Paste your API key into the **OpenRouter API Key** field that appears.
+  </Step>
+  <Step title="Select a model">
+    Open the sidebar, tap **Options**, then the **Models** button. The full OpenRouter model catalog loads automatically. Tap **Load** next to any model to select it. Your selection is saved and remembered next session.
+  </Step>
+  <Step title="Start chatting">
+    Return to the chat and send your first message. No local server is required.
+  </Step>
+</Steps>
+
+## Key differences from local mode
+
+- **No local server needed**: LM Studio and Ollama are not used when OpenRouter is active
+- **Internet required**: All requests are sent to OpenRouter's cloud servers
+- **Usage costs**: Most models charge per token; check OpenRouter's pricing page for details. Some free-tier models are available
+- **Reasoning models**: Models with built-in reasoning (for example, DeepSeek R1) are fully supported and will display their thinking process
+- **Model loading/ejecting**: Cloud models activate instantly; there is no download or hardware constraint
+
+## Privacy notice
+
+When OpenRouter is enabled, your messages are sent to OpenRouter's servers and then forwarded to the chosen model provider. Do not share sensitive personal information, passwords, or private data in your conversations. Review OpenRouter's privacy policy for details on how your data is handled.
+
+Your API key is stored locally on your device only and is never sent to LMSA's servers.
+
+## Troubleshooting
+
+| Problem | Solution |
+| --- | --- |
+| No models loading | Verify your API key is correct and has not expired. Re-enter it in Settings if needed |
+| "Server not running" error | Make sure the OpenRouter toggle is on and a valid API key is entered |
+| Responses failing mid-stream | Check your internet connection and ensure your OpenRouter account has sufficient credits |
+| Switching back to local | Turn the OpenRouter toggle off in Settings to return to LM Studio or Ollama mode |

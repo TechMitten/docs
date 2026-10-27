@@ -1,0 +1,41 @@
+---
+title: "Web search"
+description: "Enable real-time web search in LMSA so the AI can retrieve current information, news, and facts before replying."
+keywords:
+  - "web search"
+  - "Brave Search"
+  - "real-time"
+  - "internet search"
+  - "AI search"
+---
+
+The Web Search feature enables the AI model to search the web in real-time to find up-to-date information, news, and facts before generating a response.
+
+<Note>
+  Web Search is a **Premium** feature. Free users do not have access to it.
+</Note>
+
+## Enable web search
+
+<Steps>
+  <Step title="Toggle it on">
+    Open the **Side Menu** and tap the **Brave logo icon**, or open **Settings** and toggle on **Enable Web Search**.
+  </Step>
+  <Step title="Note the ephemeral setting">
+    For privacy and security, this feature is **ephemeral** and will automatically turn off when you close or restart the app.
+  </Step>
+</Steps>
+
+## How it works
+
+When Web Search is enabled and you send a prompt, LMSA generates a focused search query from your message. For follow-up questions, it may also include brief context from your recent messages so the search stays relevant. The query is sent to the privacy-respecting **Brave Search API** to retrieve relevant web results. The relevant results are then provided to your AI model as additional context to ensure the most accurate and current response possible.
+
+## Privacy-respecting features
+
+- **Privacy-first search**: Web Search uses the **Brave Search API**, a privacy-respecting service designed not to track you or build a search profile.
+- **No tracking**: We do not use tracking cookies or persistent identifiers for search requests.
+- **No data retention**: Search results are used only for the duration of the current chat generation and are not stored on any servers.
+
+<Warning>
+  While we take extensive measures to protect your privacy, a focused search query (built from your prompt and, for follow-up questions, brief context from recent messages) is shared with search providers to fetch results. Avoid including highly sensitive personal information (like passwords or private IDs) in your messages while Web Search is enabled.
+</Warning>

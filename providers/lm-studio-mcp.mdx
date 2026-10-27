@@ -1,0 +1,44 @@
+---
+title: "LM Studio MCP integrations"
+description: "Use LM Studio MCP tools in LMSA so the model can call supported integrations during chat."
+sidebarTitle: "LM Studio MCP"
+keywords:
+  - "LM Studio"
+  - "MCP"
+  - "integrations"
+  - "tools"
+  - "plugin"
+---
+
+LMSA can use LM Studio's MCP integrations so the model can call supported tools during chat. You add those integrations in LMSA, and the app sends them to LM Studio in the format LM Studio expects.
+
+<Steps>
+  <Step title="Open MCP settings">
+    Open LMSA **Settings**. Stay on **Local Server** and tap the **MCP** button.
+  </Step>
+  <Step title="Add integrations">
+    Add one or more integrations, then tap **Done** to save them. The MCP builder in LMSA creates the `integrations` JSON for you, so you usually do not need to type JSON manually.
+  </Step>
+  <Step title="Chat with tools enabled">
+    Once at least one MCP integration is saved, LMSA uses LM Studio's native MCP chat flow automatically. If the model decides to use a tool, LMSA will show a tool-use summary in the response.
+  </Step>
+</Steps>
+
+## Integration types
+
+You can choose between two types of integrations:
+
+| Type | Status | How to use |
+| --- | --- | --- |
+| **Ephemeral (remote MCP server URL)** | Temporarily unavailable | LM Studio now rejects dynamic remote MCP URLs that resolve to a non-public address, including LAN and Tailscale/VPN addresses. This option is disabled in LMSA until that changes. |
+| **Plugin ID** | Recommended | Use the MCP server ID from LM Studio's `mcp.json`, for example `mcp/playwright`. This is the current way to reach a local or self-hosted MCP server. |
+
+## Allowed tools
+
+The **Allowed Tools** field is optional. Leave it empty to allow every tool from that integration, or add specific tool names to limit what the model can call.
+
+## Important notes
+
+- Your normal LM Studio server connection still needs to work first before MCP integrations can be used
+- You do **not** put MCP server URLs in the **Hostname / IP** field. Keep that field for the LM Studio server running on your computer
+- If a tool-enabled request behaves strangely, double-check the server URL or plugin ID, and make sure the target integration is available in LM Studio

@@ -1,0 +1,45 @@
+---
+title: "Custom endpoint setup"
+description: "Connect LMSA to any OpenAI-compatible API, self-hosted or cloud."
+sidebarTitle: "Custom Endpoint"
+keywords:
+  - "custom endpoint"
+  - "OpenAI-compatible"
+  - "API"
+  - "self-hosted"
+  - "setup"
+---
+
+Custom Endpoint lets you connect LMSA to any OpenAI-compatible API. This can be a self-hosted server running on your own machine or network, or a third-party cloud service that uses the OpenAI API format.
+
+<Steps>
+  <Step title="Open the Custom Endpoint configuration">
+    On the home screen, tap the **Cloud** tab. Select the **Custom Endpoint** card and tap **Configure**.
+  </Step>
+  <Step title="Enter the server details">
+    - **Base URL**: The URL of your OpenAI-compatible server (for example, `http://192.168.1.10:8080` or a cloud API base URL)
+    - **API Key**: Enter an API key if your server requires one. Leave it blank if not
+    - **Model Name**: Optionally enter a model name if you want to specify one manually
+  </Step>
+  <Step title="Save and confirm">
+    Tap **Save**, then tap **Confirm** on the home screen to activate the connection.
+  </Step>
+  <Step title="Select a model">
+    If your server exposes a `/models` endpoint, LMSA fetches the available models automatically. Open the **Models** menu from the sidebar to browse and select one.
+
+    If your server does not expose a model list, enter the model name directly in the **Manual Model Name** field during configuration and LMSA will use that name in every request.
+  </Step>
+</Steps>
+
+## Things to know
+
+- **OpenAI-compatible format required**: The server must implement the `/chat/completions` endpoint in the OpenAI API format
+- **Mutually exclusive**: Enabling Custom Endpoint disables OpenRouter and Ollama, and vice versa
+- **Context Length and Max Output Tokens**: Both settings apply when Custom Endpoint is active
+
+## Privacy note
+
+Whether your messages stay private depends on where the server is hosted:
+
+- **Self-hosted on your local network**: Traffic stays on your network, similar to LM Studio or Ollama. The connection is not encrypted unless your server is configured for HTTPS.
+- **Third-party cloud endpoint**: Your prompts and responses are sent over the internet to that provider's servers. HTTPS encrypts the connection in transit, but the provider receives and processes your messages in plain text. Review that provider's privacy policy before use.

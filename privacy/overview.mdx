@@ -1,0 +1,55 @@
+---
+title: "Privacy overview"
+description: "How LMSA stores your data, what stays on your device, and what happens when you use cloud providers."
+keywords:
+  - "privacy"
+  - "data storage"
+  - "local"
+  - "cloud"
+  - "security"
+  - "network"
+---
+
+For your privacy and security, all chat messages are stored locally on your device. LMSA does not store your conversations on LMSA servers. However, if you use a cloud provider (such as OpenRouter or a custom API endpoint), your prompts and model responses are sent over the internet and handled by that provider on their servers. When using a local LM Studio or Ollama server instead, traffic stays on your local network. Cloud API traffic is encrypted in transit (HTTPS/TLS), but your prompts and responses are still processed on the provider's infrastructure.
+
+Please note that:
+
+- Uninstalling the app will permanently delete all saved chats.
+- Clearing app storage in device settings will erase all chat history.
+- These actions cannot be undone as data is stored only on your device.
+
+## Network security
+
+<Warning>
+  **The connection between your device and the LM Studio server is NOT encrypted.** This means that anyone monitoring your network traffic can potentially:
+
+  - Intercept and read all messages you send and receive
+  - View any personal information or sensitive data in your conversations
+  - Pose as a fake LM Studio server and respond with malicious commands or information
+  - Compromise your privacy if the network or any device on it is compromised
+</Warning>
+
+## How to protect your privacy
+
+- Only use LMSA on networks and devices you trust.
+- Never send personal information, passwords, or sensitive data through the app.
+- Avoid using LMSA on public Wi-Fi networks or shared/untrusted networks.
+- Be aware that compromised devices on your network can intercept your traffic.
+
+## What LMSA does with your data
+
+Regardless of which provider you use, **LMSA never receives or stores your chat data**. The developer cannot see your conversations:
+
+- **No chat data is sent to us:** This applies whether you are using a local server (LM Studio/Ollama), OpenRouter, or any other provider. LMSA does not route your messages through its own servers.
+- **All messages are stored locally on your device:** Your chat history is saved only on your device, not on LMSA servers.
+- **Local providers (LM Studio/Ollama):** Messages travel directly from LMSA to your local server and stay on your network.
+
+<Info>
+  While LMSA itself never receives your chats, using a cloud provider means your prompts do leave your device. If you use OpenRouter, a custom cloud API endpoint, Web Search (via the privacy-respecting **Brave Search API**), or AI image generation, the relevant prompts and content are sent directly to those third-party services and are subject to their privacy policies, not ours.
+</Info>
+
+The **Free tier includes ads**, while **Premium removes ads**. That does not change whether LMSA sends chat data to us: your conversations are still not visible to us.
+
+We believe in transparency and your right to private conversations.
+
+For more details, see our [Privacy Policy](https://lmsa.app/privacy-policy).

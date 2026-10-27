@@ -1,0 +1,37 @@
+---
+title: "Temporary chat"
+description: "Have conversations that are never saved to your chat history and disappear when the app closes."
+keywords:
+  - "temporary chat"
+  - "private chat"
+  - "ephemeral"
+  - "session-only"
+  - "privacy"
+---
+
+Temporary Chat lets you have conversations that are **never saved to your chat history**. When enabled, new chats exist only in memory for the current session and disappear as soon as the app is closed or a new chat is started.
+
+## How to enable
+
+<Steps>
+  <Step title="Open the Side Menu">
+    Open the **Side Menu** and tap **Temporary Chat** (spy icon).
+  </Step>
+  <Step title="Or use the quick-action button">
+    Alternatively, tap the **Temporary Chat** quick-action button in the message input bar.
+  </Step>
+</Steps>
+
+When active, the icon turns purple and a badge appears in the header.
+
+## Key behaviors
+
+- **Not saved to storage:** Temporary chats are never written to your device's local storage, so they won't appear in your **Saved Chats** list.
+- **Session-only:** The conversation lives in memory. Closing the app or starting a new chat permanently discards it. There is no recovery.
+- **Persisted toggle:** The Temporary Chat on/off setting itself is remembered across restarts, but not the temporary chat contents.
+- **New chat required:** You cannot convert an existing chat into a temporary one. Enabling Temporary Chat mid-conversation will prompt you to start a fresh temporary chat instead.
+- **Hidden from history:** Temporary chats are excluded from the sidebar chat list, export, and any search.
+
+<Warning>
+  Temporary Chat only controls LMSA's in-app history and local app storage. Depending on your provider, prompts and responses may still be logged outside the app: by your Local Server (LM Studio/Ollama) based on its own logging settings, or by OpenRouter/other cloud API providers according to their policies.
+</Warning>

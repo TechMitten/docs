@@ -1,0 +1,24 @@
+---
+title: "Zero data retention"
+description: "Understand how LMSA uses Zero Data Retention (ZDR) with OpenRouter to route requests to providers that do not store your data."
+keywords:
+  - "ZDR"
+  - "zero data retention"
+  - "OpenRouter"
+  - "privacy"
+  - "data storage"
+---
+
+**Zero Data Retention (ZDR)** is a policy offered by certain model providers, using designated endpoints available through OpenRouter. When the ZDR parameter is enabled for a request, OpenRouter routes that prompt only to endpoints that have agreed to enforce a Zero Data Retention policy.
+
+OpenRouter defines ZDR as: "Zero Data Retention (ZDR) means that a provider will not store your data for any period of time. OpenRouter has privacy settings that, when enabled, only allow you to route to endpoints that have a Zero Data Retention policy. You can enforce ZDR globally, per model group, per guardrail, or per request."
+
+## ZDR in LMSA
+
+LMSA is built with privacy in mind. Whenever a model has a ZDR-compatible endpoint available, LMSA automatically attaches the ZDR parameter to your request. No special settings in LMSA or changes to your OpenRouter account are needed to take advantage of zero data retention when it is available. Models that send the ZDR parameter are marked with a **green shield icon** next to the model name.
+
+However, if you have changed any default ZDR settings in your OpenRouter account, those account-level settings will take effect regardless of how LMSA sends the request. Your OpenRouter account settings always take precedence.
+
+## ZDR Only Models filter
+
+Want to guarantee every model you see is ZDR-compatible? Turn on the **ZDR Only Models** toggle to hide all other models from the model list, leaving only shield-marked models to choose from. You will find this toggle in **Settings > AI Settings**; it only applies when OpenRouter is your active provider.

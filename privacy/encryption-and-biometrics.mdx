@@ -1,0 +1,50 @@
+---
+title: "Encryption and biometrics"
+description: "How LMSA encrypts your chat history and how to lock the app with biometric authentication."
+keywords:
+  - "encryption"
+  - "AES-256"
+  - "biometric unlock"
+  - "fingerprint"
+  - "face unlock"
+  - "Android Keystore"
+---
+
+LMSA protects your saved conversations with on-device encryption and optional biometric locking. This page explains what is protected, what is not, and how to enable biometric unlock.
+
+## Chat history encryption
+
+Your saved chat history is automatically encrypted at rest on your device using **AES-256**. The encryption key is stored inside your phone's hardware security chip (Android Keystore) and never leaves your device.
+
+- **Saved chats:** All chat history written to your device's storage is encrypted.
+- **Hardware-backed key:** The decryption key lives in your phone's secure hardware and cannot be extracted by other apps or software.
+- **App-private:** Other apps on your device cannot read your chat data.
+
+## What encryption does not cover
+
+Encryption only protects data **stored on your device**. It does not apply to messages while they are traveling across a network, or to how a server handles them after receiving them:
+
+- **Local server traffic (LM Studio / Ollama):** Messages travel over your local network without encryption. Anyone on the same network could intercept them. See the [Privacy Overview](/privacy/overview) for guidance.
+- **Cloud API traffic (OpenRouter, etc.):** Messages are sent over HTTPS, but the provider receives and processes your prompts in plain text on their servers.
+- **Exported files:** Exporting your chat history produces an unencrypted JSON file. Keep exported files in a secure location.
+
+## Biometric unlock
+
+You can secure LMSA by requiring biometric authentication (such as fingerprint or face unlock) to open the app. This ensures your private conversations remain protected even if someone else gets hold of your unlocked device.
+
+<Steps>
+  <Step title="Open Settings">
+    Open the sidebar and tap **Settings**.
+  </Step>
+  <Step title="Go to Device and Privacy">
+    Navigate to the **Device and Privacy** tab.
+  </Step>
+  <Step title="Enable Biometric Unlock">
+    Toggle on **Biometric Unlock**.
+  </Step>
+</Steps>
+
+<Info>
+  - Your device must have a biometric security method or locking mechanism already set up.
+  - If biometric authentication fails, you can use your device PIN or password as a fallback.
+</Info>

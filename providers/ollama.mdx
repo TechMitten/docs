@@ -1,0 +1,53 @@
+---
+title: "Ollama setup"
+description: "Connect LMSA to an Ollama server running on your local network."
+sidebarTitle: "Ollama"
+keywords:
+  - "Ollama"
+  - "local server"
+  - "setup"
+  - "OLLAMA_HOST"
+  - "port 11434"
+---
+
+Connect LMSA to Ollama running on your computer for local, private chat. All traffic stays on your network.
+
+<Steps>
+  <Step title="Expose Ollama to your network">
+    The steps differ by operating system.
+
+    **Windows:**
+
+    - Open the Ollama app and go to **Settings**
+    - Enable **Expose Ollama to the network**
+    - Make sure Ollama is running
+
+    **Linux / macOS:**
+
+    - Start Ollama with environment variables so it listens on the network
+    - Set `OLLAMA_HOST=0.0.0.0`, then restart or relaunch the Ollama server
+  </Step>
+  <Step title="Find the host IP address">
+    Check your computer's Wi-Fi adapter IP:
+
+    - **Windows:** Open Command Prompt, type `ipconfig`, and look for the IPv4 Address under "Wireless LAN adapter Wi-Fi"
+    - **macOS:** Go to System Preferences > Network, select Wi-Fi, and note the IP address
+    - **Linux:** Open Terminal and type `ifconfig` or `ip a`
+  </Step>
+  <Step title="Enter the connection address in LMSA">
+    Open LMSA **Settings** and enter the host IP address where Ollama is running, plus the Ollama port. The default port is **11434**.
+
+    Example: `http://192.168.1.25:11434`
+  </Step>
+  <Step title="Start chatting">
+    Tap **Apply**, return to the chat, and send your first message.
+  </Step>
+</Steps>
+
+<Warning>
+  The connection between your Android device and the Ollama server is not encrypted. Only use LMSA on networks and devices you trust. Avoid sending passwords or sensitive personal information.
+</Warning>
+
+<Info>
+  If you have trouble connecting, see the [connection troubleshooting guide](/troubleshooting/connection-issues).
+</Info>

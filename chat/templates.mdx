@@ -1,0 +1,73 @@
+---
+title: "Templates and v2 character cards"
+description: "Use pre-configured personas, custom templates, and advanced v2 character cards to shape how the AI responds in LMSA."
+keywords:
+  - "templates"
+  - "character cards"
+  - "v2 cards"
+  - "system prompts"
+  - "AI personas"
+---
+
+Templates provide pre-configured AI personas that specialize in different tasks. Instead of writing custom system prompts, you can select from ready-made templates, build your own custom templates, or work with advanced v2 character cards.
+
+## Access templates
+
+<Steps>
+  <Step title="Open Templates">
+    Open the sidebar and tap **Templates**.
+  </Step>
+  <Step title="Browse or create">
+    Browse available templates like Math Tutor, Code Assistant, and Summarizer. Tap **Create New** to build your own template, or use **Import v2 Card** at the top of the page to load a character card JSON file.
+  </Step>
+</Steps>
+
+Each template has a specialized role and personality designed for specific tasks.
+
+## Basic vs advanced v2
+
+- **Basic** templates are ideal when you only need a description and a system prompt.
+- **Advanced v2 Card** adds roleplay-oriented fields such as personality, scenario, first message, alternate greetings, tags, character book JSON, and extensions JSON.
+
+LMSA stores the full v2 card data, then builds the runtime system prompt from that card when you activate it. If the v2 card includes a first message or alternate greetings, LMSA can seed the opening assistant message automatically when the template is activated.
+
+## Import v2 character cards
+
+<Steps>
+  <Step title="Import from Templates">
+    Use **Import v2 Card** on the Templates page to import a JSON character card directly into LMSA.
+  </Step>
+  <Step title="Import during creation">
+    Alternatively, open **Create New**, switch to **Advanced v2 Card**, and use **Import JSON** inside the modal.
+  </Step>
+  <Step title="Review before saving">
+    After import, review the fields before saving if you want to adjust the runtime behavior or metadata.
+  </Step>
+</Steps>
+
+LMSA currently supports the JSON v2 card format and converts the card into a reusable LMSA custom template.
+
+## AI fill for v2 cards
+
+Inside the **Advanced v2 Card** tab, tap **Generate with AI** to fill blank character-card fields. **Description is required** before AI generation will run. The AI uses the fields you already filled in as constraints and only generates the fields that are still blank. After generation, LMSA refreshes the derived runtime prompt so the basic prompt field stays in sync with the v2 card data.
+
+## Select and use a template
+
+<Steps>
+  <Step title="Select a template">
+    Tap on any template card to select it. It will highlight with a blue ring.
+  </Step>
+  <Step title="Start chatting">
+    Tap the **Start Chatting** button at the bottom. You will return to the main chat with the template active, and a banner at the top will show which template is currently active.
+  </Step>
+</Steps>
+
+When a template is active, the AI will respond according to that template's personality and expertise. Templates work across all your conversations until you disable or change them. You can switch templates at any time by going back to the Templates page.
+
+## Disable a template
+
+Click the **Disable** button in the template indicator banner at the top. This will remove the template and return the AI to its default behavior. You can also disable templates by clearing the system prompt in **Settings**.
+
+## Model quality
+
+The effectiveness of templates varies depending on which AI model you're using in LM Studio. Larger, more capable models (like 13B+ parameter models) will follow template instructions more accurately and produce better results. Smaller models may not adhere as closely to the template's personality or expertise. For best results with templates, use a model with strong instruction-following capabilities.

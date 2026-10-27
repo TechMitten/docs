@@ -1,0 +1,53 @@
+---
+title: "Import and export LM Studio prompts"
+description: "Move system prompts between LMSA and LM Studio by importing and exporting profile JSON files."
+keywords:
+  - "LM Studio prompts"
+  - "import prompts"
+  - "export prompts"
+  - "profile JSON"
+  - "system prompt"
+---
+
+LMSA can import system prompts from LM Studio profile JSON files, and it can also export your saved LMSA system prompts back out as LM Studio profile JSON files.
+
+## Where LM Studio stores the JSON files
+
+- **Windows**: `%USERPROFILE%\.lmstudio\config-presets`
+- **macOS / Linux**: `~/.lmstudio/config-presets`
+
+Find the LM Studio profile `.json` file on your computer, then transfer that file to your mobile device before importing it into LMSA.
+
+## Import a prompt into LMSA
+
+<Steps>
+  <Step title="Transfer the file">
+    Copy or send the LM Studio profile JSON file from your computer to your phone or tablet using any transfer method you prefer.
+  </Step>
+  <Step title="Open Import/Export">
+    In LMSA, open **Options**, then open **Import/Export** and tap **Import System Prompt (LMS)**.
+  </Step>
+  <Step title="Select the file">
+    When the LMSA file picker opens, browse to the JSON file on your mobile device and select it. LMSA reads the system prompt from that JSON file and saves it as a reusable LMSA prompt.
+  </Step>
+</Steps>
+
+## Where to find imported prompts
+
+Imported prompts appear in **Settings > System Prompt**. The **Saved Prompts** section below the editor lets you review, edit, and reuse the prompts you imported. If the LM Studio JSON includes a profile name, LMSA uses that as the saved prompt name. Otherwise it falls back to the JSON filename.
+
+After the import finishes and the prompt appears in Saved Prompts, you can delete the transferred JSON file from your phone if you no longer need it.
+
+## Export a prompt from LMSA
+
+<Steps>
+  <Step title="Save the prompt">
+    Save the system prompt you want to share in **Settings > System Prompt**.
+  </Step>
+  <Step title="Open Import/Export">
+    In LMSA, open **Options**, then open **Import/Export** and tap **Export Saved Prompt (LMS)**.
+  </Step>
+  <Step title="Save and transfer">
+    Choose the saved prompt you want to export, then save the generated JSON file to your device. Transfer that JSON file to your computer, then import it into LM Studio or place it in LM Studio's `config-presets` folder.
+  </Step>
+</Steps>

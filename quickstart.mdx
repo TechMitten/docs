@@ -1,47 +1,56 @@
 ---
 title: "Quickstart"
-description: "Begin with a guide on the fastest path to a successful outcome"
+description: "Install LMSA, choose a provider, and send your first message in minutes."
+keywords:
+  - "quickstart"
+  - "setup"
+  - "first chat"
+  - "install"
+  - "onboarding"
 ---
 
-Describe how someone begins using your product. What is the first thing they need to do? Are there any prerequisites?
-
-A quickstart should take someone from zero to using your product. They'll get a quick win and a sense of what they can accomplish.
-
-## Prerequisites
-
-Before you begin, you must have:
-
-- Requirement one (for example, Node.js 18+, a free account, an API key)
-- Requirement two (for example, a compatible device, a compatible browser, a compatible operating system)
-
-## Get started
+This guide walks you from installation to your first chat. After you finish, you can explore advanced features like templates, file attachments, and voice mode.
 
 <Steps>
-  <Step title="Install">
-    Describe how to install your product or sign up.
-
-    ```bash
-    npm install your-package
-    ```
+  <Step title="Install LMSA">
+    Download LMSA from the Google Play Store and open the app. The first time you launch it, the Quick Start Guide appears automatically.
   </Step>
-  <Step title="Configure">
-    Describe any setup or configuration needed before first use.
+  <Step title="Choose your language">
+    Pick the language you want LMSA to display in. You can change this later in **Settings** under **Device & Privacy**.
 
-    ```bash
-    your-cli init
-    ```
+    Currently supported: English, Spanish, Russian, German, and Simplified Chinese.
   </Step>
-  <Step title="Run it">
-    Show the first thing a user does to see it working.
+  <Step title="Choose a connection">
+    On the home screen, tap the provider you want to use:
 
-    ```bash
-    your-cli start
-    ```
+    - **Local Server**: Connect to [LM Studio](/providers/lm-studio) or [Ollama](/providers/ollama) running on your computer for fully private, offline chat.
+    - **OpenRouter**: Access hundreds of cloud models with an API key. See the [OpenRouter setup guide](/providers/openrouter).
+    - **Custom API**: Connect to any [OpenAI-compatible endpoint](/providers/custom-endpoint), self-hosted or cloud.
+
+    You can change providers anytime by opening the side menu and tapping the provider name at the bottom.
+  </Step>
+  <Step title="Configure and apply">
+    Enter the required details for your chosen provider (server address, API key, or endpoint URL), then tap **Apply**.
+  </Step>
+  <Step title="Start your first chat">
+    Type a message and tap send. Chats save automatically, and you can switch models anytime from the sidebar.
   </Step>
 </Steps>
 
-<Tip>
-  Give people a way to get help. This could be a link to a support page, a chat with a customer support agent, or a forum for your product.
+## Optional next steps
 
-  Example: Need help? Reach out to us at [support@yourcompany.com](mailto:support@yourcompany.com).
-</Tip>
+After your first chat, the Quick Start Guide may prompt you with two optional settings:
+
+<AccordionGroup>
+  <Accordion title="Enable notifications">
+    Allow notification permissions so you can control voice-mode text-to-speech playback from your lock screen and notification shade. You can skip this and enable it later in your device settings.
+  </Accordion>
+
+  <Accordion title="Keep generating in background">
+    Allow LMSA to keep generating replies when you switch to another app or lock your screen. You will see a progress notification while a response is being written, and a completion alert when it is done. You can change this anytime in **Settings** under **Device & Privacy**.
+  </Accordion>
+</AccordionGroup>
+
+<Info>
+  If you ever want to revisit the Quick Start Guide, you can access it from the app help section.
+</Info>

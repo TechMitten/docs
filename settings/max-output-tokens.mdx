@@ -1,0 +1,53 @@
+---
+title: "Max output tokens"
+description: "Cap how long the AI model is allowed to keep generating during normal chat."
+keywords:
+  - "max output tokens"
+  - "token limit"
+  - "response length"
+  - "settings"
+---
+
+LMSA includes a **Max Output Tokens** setting in **Settings > Options**. This control lets you cap how long the model is allowed to keep generating during normal chat.
+
+## How to adjust max output tokens
+
+<Steps>
+  <Step title="Open Settings">
+    Open the sidebar and tap **Settings**.
+  </Step>
+  <Step title="Find Max Output Tokens">
+    Go to **Options** and find **Max Output Tokens**.
+  </Step>
+  <Step title="Set a value">
+    Enter a whole number greater than **0** to set a hard ceiling for the model's reply length.
+  </Step>
+  <Step title="Use default if desired">
+    Tap **Default**, or leave the field blank, to remove LMSA's override and let the active provider decide.
+  </Step>
+</Steps>
+
+## Where it applies
+
+- **Local Server:** affects normal chat requests, including LM Studio native MCP chat.
+- **OpenRouter:** affects main chat requests sent through OpenRouter.
+- **Custom Endpoint:** affects main chat requests sent to your OpenAI-compatible endpoint.
+
+It is mainly for your regular chat replies and regeneration requests.
+
+## What "Default" means
+
+**Default** does not mean LMSA uses one fixed fallback number. It means LMSA stops sending its own max-token cap for normal chat. On **OpenRouter** or a **Custom Endpoint**, the real limit then depends on that provider, server, and model. On local chat, the local server or model decides unless that API path has its own separate native rules.
+
+## When this setting is useful
+
+- Lower it if replies are too long, too slow, or too expensive on cloud models.
+- Raise it if answers keep cutting off before they finish.
+- Use **Default** if you switch models often and want each provider to manage its own normal behavior.
+- Reasoning-heavy models usually need a larger token budget than simple chat models.
+
+<Warning>
+  - This setting does **not** change the separate hardcoded token budgets used by **Smart Reply**.
+  - It also does **not** change the separate hardcoded token budgets used by **template generation** tools.
+  - LM Studio native MCP requests may still use other native parameters, such as a separate context-length value.
+</Warning>

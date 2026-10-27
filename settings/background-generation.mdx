@@ -1,0 +1,48 @@
+---
+title: "Keep generating in background"
+description: "Let LMSA finish generating replies and reading them aloud even when you switch to another app or lock your screen."
+keywords:
+  - "background generation"
+  - "foreground service"
+  - "notifications"
+  - "battery"
+  - "settings"
+---
+
+Android pauses apps you aren't looking at to save battery. Without this setting, switching to another app while LMSA is writing a reply or reading one aloud can cut it off part-way through. Turn it on in **Settings > Device and Privacy**. It is off by default.
+
+## How it works
+
+When you send a message, LMSA starts an Android foreground service that keeps the app awake, even with the screen off. It stops as soon as the response finishes, or after **30 minutes** at most.
+
+## When it's on
+
+- **Replies finish while you're away:** You can switch apps or lock your screen and the response keeps generating. A **Generating response...** notification shows while it works, with a **Stop** button if you change your mind.
+- **You're told when it's done:** If a reply finishes while you're in another app, you'll get a **Response finished** notification. Tap it to jump straight back to the chat.
+- **Read-aloud keeps playing:** Responses being read aloud continue in the background, with **Play**, **Pause**, and **Stop** controls in the notification.
+
+## When it's off
+
+- Read-aloud stops as soon as you leave LMSA.
+- A reply that's still generating may be cut off if you switch away. Stay in the app until it finishes.
+- If you leave while something is still running, LMSA offers to turn the setting on for you. Choose **Not now** to keep it off.
+
+## Tips
+
+- **Allow notifications:** On Android 13 and newer, LMSA asks for notification permission the first time it works in the background. If you deny it, background generation still works, but you won't see the progress or "finished" notifications.
+- **Still getting cut off?** Some phones close background apps aggressively to save power. Set LMSA's battery usage to **Unrestricted** (see [Battery Optimization](/troubleshooting/connection-issues)).
+- **Battery use:** LMSA only stays active while a reply is generating or being read aloud. It goes back to normal as soon as that finishes.
+
+## How to enable
+
+<Steps>
+  <Step title="Open Settings">
+    Open the sidebar and tap **Settings**.
+  </Step>
+  <Step title="Go to Device and Privacy">
+    Navigate to the **Device and Privacy** tab.
+  </Step>
+  <Step title="Toggle background generation">
+    Find **Keep Generating in Background** and turn it on.
+  </Step>
+</Steps>

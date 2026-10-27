@@ -1,0 +1,104 @@
+---
+title: "Connection issues"
+description: "Troubleshoot problems connecting LMSA to your LM Studio, Ollama, or other local server."
+keywords:
+  - "troubleshooting"
+  - "connection"
+  - "LM Studio"
+  - "Ollama"
+  - "network"
+  - "firewall"
+  - "battery"
+---
+
+If you are having trouble connecting LMSA to your LM Studio server, follow the steps below.
+
+<AccordionGroup>
+  <Accordion title="Verify server settings">
+    Verify that **Serve on Local Network** is enabled in LM Studio settings. This is required for the server to accept connections from devices on your network.
+  </Accordion>
+
+  <Accordion title="Verify IP address">
+    The IP address shown in LM Studio may sometimes be incorrect. Manually check your computer's Wi-Fi adapter IP address:
+
+    - **Windows:** Open Command Prompt and type `ipconfig`, look for "Wireless LAN adapter Wi-Fi" and use the IPv4 Address listed there.
+    - **Mac:** Go to System Preferences > Network, select Wi-Fi, and note the IP address.
+    - **Linux:** Open Terminal and type `ip addr show` or `ifconfig`.
+
+    Enter this IP address from your Wi-Fi adapter into LMSA.
+  </Accordion>
+
+  <Accordion title="Network configuration">
+    - Ensure both your computer and Android phone are on the **same network**.
+    - Avoid guest networks, which often isolate devices from each other.
+    - Check if your router has VLAN isolation or AP isolation enabled (disable if present).
+    - Disable VPN on both devices, as VPNs typically isolate local network connections.
+  </Accordion>
+
+  <Accordion title="Firewall settings">
+    **Windows Users:** Check Windows Firewall to ensure LM Studio is allowed through:
+
+    - Go to Windows Security > Firewall and network protection > Allow an app through firewall.
+    - Verify LM Studio has checkmarks for both **Private and Public networks** (or whichever profile you are using).
+    - If LM Studio is not listed, click "Allow another app" and add it manually.
+
+    **Linux Users:**
+
+    - Check UFW in terminal with `sudo ufw status`.
+    - Ensure the correct port is allowed.
+  </Accordion>
+
+  <Accordion title="Port configuration">
+    - Try using different ports if the default (1234) does not work.
+    - Common alternatives: **8080, 5000, 3000**.
+    - Ensure the port you choose is not blocked by your firewall or used by another application.
+  </Accordion>
+
+  <Accordion title="Incomplete model list">
+    If all models or only a partial list of models are showing as options in the Model Information modal:
+
+    - Close LM Studio and the LMSA Android app completely.
+    - Start LM Studio again.
+    - Open the LMSA app.
+    - If this does not work, restart your computer and Android device and try again.
+  </Accordion>
+
+  <Accordion title="Test network connectivity">
+    **From Android to Computer:**
+
+    - Download a networking app with ping functionality (for example, PingTools or Network Utilities).
+    - Ping your computer's IP address to verify connectivity.
+
+    **From Computer to Android:**
+
+    - Find your Android phone's IP address in your router's connected devices list or in phone settings.
+    - Open Command Prompt (Windows) or Terminal (Mac/Linux) and run `tracert [phone-ip]` (Windows) or `traceroute [phone-ip]` (Mac/Linux).
+    - If the traceroute fails, there may be network isolation preventing communication.
+  </Accordion>
+
+  <Accordion title="Battery optimization">
+    Some Android devices aggressively close background connections to save power. You may need to disable battery optimization for LMSA to prevent connection drops.
+
+    <Steps>
+      <Step title="Open device Settings">
+        Open your device **Settings**.
+      </Step>
+      <Step title="Find Apps">
+        Tap **Apps** (or **Apps and Notifications**).
+      </Step>
+      <Step title="Select LMSA">
+        Find and tap **LMSA** in your app list.
+      </Step>
+      <Step title="Open Battery settings">
+        Tap **Battery** (or **App Battery Usage**).
+      </Step>
+      <Step title="Set to unrestricted">
+        Select **Unrestricted** (or toggle **Allow background usage**).
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+## OpenRouter troubleshooting
+
+If you are using OpenRouter and experiencing issues, see [OpenRouter setup and troubleshooting](/providers/openrouter) for common problems such as API key errors, model loading failures, and switching back to local mode.
